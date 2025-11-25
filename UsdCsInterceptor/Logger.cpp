@@ -48,6 +48,7 @@ static void LogArgPrefix()
 {
 	if (g_firstArgInCall)
 	{
+		fprintf(g_log, "\n\t\"args\": [");
 		fprintf(g_log, "\n");
 		g_firstArgInCall = false;
 	}
@@ -90,79 +91,113 @@ void Header(const char* func)
 
 	g_firstArgInCall = true;
 	fprintf(g_log,
-		"{ \"seq\": %llu, \"func\": \"%s\", \"time\": %llu,\n  \"args\": [",
+		"{\n\t\"seq\": %llu,\n\t\"func\": \"%s\",\n\t\"time\": %llu,",
 		(unsigned long long)seq,
 		func,
 		(unsigned long long)time
 	);
 }
 
+void LogArgBool(const char* name, bool v)
+{
+	LogArgPrefix();
+	fprintf(g_log, "\t\t{\"%s\": %s}", name, v ? "true" : "false");
+}
+
 void LogArgInt(const char* name, int v)
 {
 	LogArgPrefix();
-	fprintf(g_log, "    {\"%s\": %d}", name, v);
+	fprintf(g_log, "\t\t{\"%s\": %d}", name, v);
+}
+
+void LogArgUInt(const char* name, unsigned int v)
+{
+	LogArgPrefix();
+	fprintf(g_log, "\t\t{\"%s\": %u}", name, v);
+}
+
+void LogArgFloat(const char* name, float v)
+{
+	LogArgPrefix();
+	fprintf(g_log, "\t\t{\"%s\": %.9g}", name, v);
 }
 
 void LogArgDouble(const char* name, double v)
 {
 	LogArgPrefix();
-	fprintf(g_log, "    {\"%s\": %.17g}", name, v);
+	fprintf(g_log, "\t\t{\"%s\": %.17g}", name, v);
 }
 
 void LogArgString(const char* name, const char* v)
 {
 	LogArgPrefix();
-	fprintf(g_log, "    {\"%s\": \"%s\"}", name, v ? v : "");
-	// NOTE: no escaping; OK for internal logs
+	if (v)
+		fprintf(g_log, "\t\t{\"%s\": \"%s\"}", name, v);
+	else
+		fprintf(g_log, "\t\t{\"%s\": null}", name);
 }
 
-void LogArgHandle(const char* name, void* p)
-{
+void LogArgPtr(const char* name, void* p) {
 	uint32_t id = PtrToId(p);
 	LogArgPrefix();
-	fprintf(g_log, "    {\"%s\": %u}", name, id);
+	fprintf(g_log, "\t\t{\"%s\": %u}", name, id);
+}
+
+void LogArgEnd()
+{
+	if (g_firstArgInCall) {
+		fprintf(g_log, "\n"); // no args case
+	}
+	else {
+		fprintf(g_log, "\n\t],\n");
+	}
+}
+
+void LogEnd()
+{
+	fprintf(g_log, "},\n");
 }
 
 void LogReturnHandle(void* p)
 {
 	uint32_t id = PtrToId(p);
 
-	if (g_firstArgInCall)
-		fprintf(g_log, "\n"); // no args case
-	else
-		fprintf(g_log, "\n");
+	LogArgEnd();
 
 	fprintf(g_log,
-		"  ],\n"
-		"  \"return\": {\"handle\": %u},\n",
+		"\t\"return\": {\"handle\": %u},\n",
 		id
 	);
+	LogEnd();
 }
+
+void LogReturnBool(bool v) { LogReturnInt(v ? 1 : 0); }
+void LogReturnUInt(unsigned v) { LogReturnInt((int)v); }
 
 void LogReturnInt(int v)
 {
-	if (g_firstArgInCall)
-		fprintf(g_log, "\n");
-	else
-		fprintf(g_log, "\n");
-
+	LogArgEnd();
 	fprintf(g_log,
-		"  ],\n"
-		"  \"return\": {\"int\": %d},\n",
+		"\t\"return\": {\"int\": %d},\n",
 		v
 	);
+	LogEnd();
+}
+
+void LogReturnCStr(const char* v)
+{
+	LogArgEnd();
+	if (v)
+		fprintf(g_log, "\t\"return\": {\"string\": \"%s\"},\n", v);
+	else
+		fprintf(g_log, "\t\"return\": {\"string\": null},\n");
+	LogEnd();
 }
 
 void LogReturnVoid()
 {
-	if (g_firstArgInCall)
-		fprintf(g_log, "\n"); // no args case
-	else
-		fprintf(g_log, "\n");
-
-	fprintf(g_log,
-		"  ],\n"
-	);
+	LogArgEnd();
+	LogEnd();
 }
 
 void LogRaw(const char* msg, ...) {
