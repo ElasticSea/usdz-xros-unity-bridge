@@ -1,6 +1,8 @@
-#include "UsdCs_wrapper_helpers.h"
+// RealUsdCs.cpp
+#include "RealUsdCs.h"
+#include "Logger.h"
+#include <cstring>
 #include "LoggerConfig.h"
-
 #define ORIGINAL_DLL_NAME "UsdCs_original.dll"
 
 static HMODULE g_realUsdCs = nullptr;
@@ -16,7 +18,7 @@ static HMODULE GetOwnModule()
     return h;
 }
 
-HMODULE GetRealModule()
+HMODULE RealUsdCs_GetModule()
 {
     if (g_realUsdCs)
         return g_realUsdCs;
@@ -26,7 +28,6 @@ HMODULE GetRealModule()
 
     if (len == 0 || len >= MAX_PATH)
     {
-        // Fallback: just the name
         strcpy_s(path, ORIGINAL_DLL_NAME);
     }
     else
@@ -40,59 +41,43 @@ HMODULE GetRealModule()
         strcat_s(path, ORIGINAL_DLL_NAME);
     }
 
-    // IMPORTANT: use LoadLibraryEx so dependencies are searched in this DLL's folder
     g_realUsdCs = LoadLibraryExA(
         path,
         nullptr,
-        LOAD_WITH_ALTERED_SEARCH_PATH  // or LOAD_LIBRARY_SEARCH_DLL_LOAD_DIR on newer SDKs
-    );
+        LOAD_WITH_ALTERED_SEARCH_PATH);
 
     if (!g_realUsdCs)
     {
         DWORD err = GetLastError();
-        FILE* f = nullptr;
-        fopen_s(&f, LOG_PATH, "a");
-        if (f)
-        {
-            fprintf(f,
-                "[UsdCs wrapper] LoadLibraryEx failed.\n"
-                "  Tried path: %s\n"
-                "  GetLastError: %lu\n",
-                path, (unsigned long)err);
-            fclose(f);
-        }
+        LogImmediate(
+            "[UsdCs wrapper] LoadLibraryEx failed. Tried path: %s, GetLastError: %lu\n",
+            path, (unsigned long)err);
+    }
+    else
+    {
+        LogImmediate("[UsdCs wrapper] Loaded original DLL from: %s\n", path);
     }
 
     return g_realUsdCs;
 }
 
-FARPROC GetRealProc(const char* name)
+FARPROC RealUsdCs_GetProc(const char* name)
 {
-    HMODULE mod = GetRealModule();
+    HMODULE mod = RealUsdCs_GetModule();
     if (!mod)
     {
-        FILE* f = nullptr;
-        fopen_s(&f, LOG_PATH, "a");
-        if (f)
-        {
-            fprintf(f, "[UsdCs wrapper] ERROR: GetRealModule() failed when resolving %s\n", name);
-            fclose(f);
-        }
+        LogImmediate(
+            "[UsdCs wrapper] ERROR: RealUsdCs_GetModule() failed when resolving %s\n",
+            name);
         return nullptr;
     }
-
 
     FARPROC proc = GetProcAddress(mod, name);
     if (!proc)
     {
-        FILE* f = nullptr;
-        fopen_s(&f, LOG_PATH, "a");
-        if (f)
-        {
-            fprintf(f, "[UsdCs wrapper] ERROR: GetProcAddress failed for %s\n", name);
-            fclose(f);
-        }
+        LogImmediate(
+            "[UsdCs wrapper] ERROR: GetProcAddress failed for %s\n",
+            name);
     }
-
     return proc;
 }

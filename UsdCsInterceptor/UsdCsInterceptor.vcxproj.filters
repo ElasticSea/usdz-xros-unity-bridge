@@ -18,12 +18,27 @@
     <ClInclude Include="UsdCs_wrapper_helpers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Logger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LoggerConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UsdCs_wrapper_exports.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="UsdCs_wrapper_helpers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RealUsdCs.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RealUsdCs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

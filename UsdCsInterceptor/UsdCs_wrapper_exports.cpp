@@ -1,4 +1,5 @@
 #include "UsdCs_wrapper_helpers.h"
+#include "Logger.h"
 // Auto-generated wrapper exports for UsdCs.dll
 // Generated: 11/24/2025 12:54:41 AM
 
