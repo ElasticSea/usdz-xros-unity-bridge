@@ -41,9 +41,6 @@
     <ClCompile Include="RealUsdCs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="usd_unused.cpp">
-      <Filter>Source Files\api</Filter>
-    </ClCompile>
     <ClCompile Include="usd_selected.cpp">
       <Filter>Source Files\api</Filter>
     </ClCompile>

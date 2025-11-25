@@ -28,7 +28,6 @@
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="RealUsdCs.cpp" />
     <ClCompile Include="RealUsdCs.h" />
-    <ClCompile Include="usd_unused.cpp" />
     <ClCompile Include="UsdCs_wrapper_helpers.cpp" />
     <ClCompile Include="usd_selected.cpp" />
   </ItemGroup>
