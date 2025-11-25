@@ -1,0 +1,1 @@
+python build.py D:/ElasticSea/OpenUSD/build_win64
