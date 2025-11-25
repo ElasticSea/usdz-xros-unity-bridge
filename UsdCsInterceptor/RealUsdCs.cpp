@@ -49,13 +49,13 @@ HMODULE RealUsdCs_GetModule()
     if (!g_realUsdCs)
     {
         DWORD err = GetLastError();
-        LogImmediate(
+        LogRaw(
             "[UsdCs wrapper] LoadLibraryEx failed. Tried path: %s, GetLastError: %lu\n",
             path, (unsigned long)err);
     }
     else
     {
-        LogImmediate("[UsdCs wrapper] Loaded original DLL from: %s\n", path);
+        LogRaw("[UsdCs wrapper] Loaded original DLL from: %s\n", path);
     }
 
     return g_realUsdCs;
@@ -66,7 +66,7 @@ FARPROC RealUsdCs_GetProc(const char* name)
     HMODULE mod = RealUsdCs_GetModule();
     if (!mod)
     {
-        LogImmediate(
+        LogRaw(
             "[UsdCs wrapper] ERROR: RealUsdCs_GetModule() failed when resolving %s\n",
             name);
         return nullptr;
@@ -75,7 +75,7 @@ FARPROC RealUsdCs_GetProc(const char* name)
     FARPROC proc = GetProcAddress(mod, name);
     if (!proc)
     {
-        LogImmediate(
+        LogRaw(
             "[UsdCs wrapper] ERROR: GetProcAddress failed for %s\n",
             name);
     }

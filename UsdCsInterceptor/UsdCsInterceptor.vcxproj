@@ -24,11 +24,13 @@
     <ClInclude Include="UsdCs_wrapper_helpers.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="RealUsdCs.cpp" />
     <ClCompile Include="RealUsdCs.h" />
-    <ClCompile Include="UsdCs_wrapper_exports.cpp" />
+    <ClCompile Include="usd_unused.cpp" />
     <ClCompile Include="UsdCs_wrapper_helpers.cpp" />
+    <ClCompile Include="usd_selected.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

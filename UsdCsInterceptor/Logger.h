@@ -2,9 +2,9 @@
 #pragma once
 #include <cstdint>
 
-// Call lifecycle
-void Begin();
-void End();
+// Lifecycle
+void Init();
+void Shutdown();
 
 // Header
 void Header(const char* func);
@@ -21,4 +21,4 @@ void LogReturnInt(int v);
 void LogReturnVoid();
 
 // Other
-void LogImmediate(const char* msg, ...);
+void LogRaw(const char* msg, ...);

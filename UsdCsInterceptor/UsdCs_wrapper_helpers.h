@@ -12,7 +12,7 @@ FARPROC GetRealProc(const char* name);
     using name##_fn = rettype (callconv*) args;                          \
     extern "C" __declspec(dllexport) rettype callconv name args          \
     {                                                                    \
-        LogImmediate("[MISSING LOG] name: %s\n", #name);                 \
+        LogRaw("[MISSING LOG] name: %s\n", #name);                 \
         static name##_fn real = nullptr;                                 \
         if (!real)                                                       \
             real = reinterpret_cast<name##_fn>(GetRealProc(#name));      \
@@ -25,7 +25,7 @@ FARPROC GetRealProc(const char* name);
     using name##_fn = void (callconv*) args;                             \
     extern "C" __declspec(dllexport) void callconv name args             \
     {                                                                    \
-        LogImmediate("[MISSING LOG] name: %s\n", #name);                 \
+        LogRaw("[MISSING LOG] name: %s\n", #name);                 \
         static name##_fn real = nullptr;                                 \
         if (!real)                                                       \
             real = reinterpret_cast<name##_fn>(GetRealProc(#name));      \
@@ -47,14 +47,12 @@ FARPROC GetRealProc(const char* name);
         if (!real)                                                                   \
             real = reinterpret_cast<name##_fn>(GetRealProc(#name));                  \
                                                                                      \
-        Begin();                                                                     \
         Header(#name);                                                               \
                                                                                      \
         do { LOG_ARGS; } while (0);                                                  \
         if (real) real argnames;                                                     \
                                                                                      \
         LogReturnVoid();                                                             \
-        End();                                                                       \
     }
 
 #define WRAP_PROC_RET_HANDLE_LOG(name, rettype, callconv, args, argnames, LOG_ARGS)   \
@@ -65,14 +63,12 @@ FARPROC GetRealProc(const char* name);
         if (!real)                                                                   \
             real = reinterpret_cast<name##_fn>(GetRealProc(#name));                  \
                                                                                      \
-        Begin();                                                                     \
         Header(#name);                                                               \
                                                                                      \
         do { LOG_ARGS; } while (0);                                                  \
         rettype _ret = (real != nullptr) ? real argnames : (rettype)0;               \
                                                                                      \
         LogReturnHandle((void*)_ret);                                                \
-        End();                                                                       \
         return _ret;                                                                 \
     }
 
@@ -85,13 +81,11 @@ FARPROC GetRealProc(const char* name);
         if (!real)                                                                   \
             real = reinterpret_cast<name##_fn>(GetRealProc(#name));                  \
                                                                                      \
-        Begin();                                                                     \
         Header(#name);                                                               \
                                                                                      \
         do { LOG_ARGS; } while (0);                                                  \
         int _ret = (real != nullptr) ? real argnames : 0;                            \
                                                                                      \
         LogReturnInt(_ret);                                                \
-        End();                                                                       \
         return _ret;                                                                 \
     }
