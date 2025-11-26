@@ -6,6 +6,11 @@
 
 using namespace pxr;
 
+#if defined(_WIN32)
+#   define USDCS_EXPORT __declspec(dllexport)
+#else
+#   define USDCS_EXPORT __attribute__((visibility("default")))
+#endif
 
 //#pragma region Debug Log
 //static FILE* g_
@@ -40,7 +45,7 @@ namespace pxr
 // Exception callbacks (UsdCs)
 // ==============================
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl SWIGRegisterExceptionCallbacks_UsdCs(
     void* application,
     void* arithmetic,
@@ -75,7 +80,7 @@ void __cdecl SWIGRegisterExceptionCallbacks_UsdCs(
     (void)argumentOutOfRange;
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl SWIGRegisterExceptionArgumentCallbacks_UsdCs(
     void* argument,
     void* argumentNull,
@@ -89,67 +94,67 @@ void __cdecl SWIGRegisterExceptionArgumentCallbacks_UsdCs(
 
 static void* g_gfStringCallback = nullptr;
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl SWIGRegisterStringCallback_Gf(void* cb)
 {
     g_gfStringCallback = cb;
 }
 static void *g_sdfStringCallback = nullptr;
-extern "C" __declspec(dllexport) void __cdecl SWIGRegisterStringCallback_Sdf(void *cb)
+extern "C" USDCS_EXPORT void __cdecl SWIGRegisterStringCallback_Sdf(void *cb)
 {
     g_sdfStringCallback = cb;
 }
 static void* g_stdStringCallback = nullptr;
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl SWIGRegisterStringCallback_Std(void* cb)
 {
     g_stdStringCallback = cb;
 }
 static void* g_tfStringCallback = nullptr;
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl SWIGRegisterStringCallback_Tf(void* cb)
 {
     g_tfStringCallback = cb;
 }
 static void* g_usdStringCallback = nullptr;
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl SWIGRegisterStringCallback_Usd(void* cb)
 {
     g_usdStringCallback = cb;
 }
 static void* g_usdCsStringCallback = nullptr;
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl SWIGRegisterStringCallback_UsdCs(void* cb)
 {
     g_usdCsStringCallback = cb;
 }
 static void* g_usdGeomStringCallback = nullptr;
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl SWIGRegisterStringCallback_UsdGeom(void* cb)
 {
     g_usdGeomStringCallback = cb;
 }
 static void* g_usdShadeStringCallback = nullptr;
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl SWIGRegisterStringCallback_UsdShade(void* cb)
 {
     g_usdShadeStringCallback = cb;
 }
 static void* g_usdUtilsStringCallback = nullptr;
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl SWIGRegisterStringCallback_UsdUtils(void* cb)
 {
     g_usdUtilsStringCallback = cb;
 }
 static void* g_vtStringCallback = nullptr;
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl SWIGRegisterStringCallback_Vt(void* cb)
 {
     g_vtStringCallback = cb;
@@ -265,117 +270,117 @@ static SdfValueTypeName g_SdfGetValueTypeVector3f = SdfValueTypeNames->Vector3f;
 static SdfValueTypeName g_SdfGetValueTypeVector3fArray = SdfValueTypeNames->Vector3fArray;
 static SdfValueTypeName g_SdfGetValueTypeVector3h = SdfValueTypeNames->Vector3h;
 static SdfValueTypeName g_SdfGetValueTypeVector3hArray = SdfValueTypeNames->Vector3hArray;
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeAsset() { return &g_SdfGetValueTypeAsset; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeAssetArray() { return &g_SdfGetValueTypeAssetArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeBool() { return &g_SdfGetValueTypeBool; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeBoolArray() { return &g_SdfGetValueTypeBoolArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeColor3d() { return &g_SdfGetValueTypeColor3d; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeColor3dArray() { return &g_SdfGetValueTypeColor3dArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeColor3f() { return &g_SdfGetValueTypeColor3f; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeColor3fArray() { return &g_SdfGetValueTypeColor3fArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeColor3h() { return &g_SdfGetValueTypeColor3h; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeColor3hArray() { return &g_SdfGetValueTypeColor3hArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeColor4d() { return &g_SdfGetValueTypeColor4d; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeColor4dArray() { return &g_SdfGetValueTypeColor4dArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeColor4f() { return &g_SdfGetValueTypeColor4f; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeColor4fArray() { return &g_SdfGetValueTypeColor4fArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeColor4h() { return &g_SdfGetValueTypeColor4h; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeColor4hArray() { return &g_SdfGetValueTypeColor4hArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeDouble() { return &g_SdfGetValueTypeDouble; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeDouble2() { return &g_SdfGetValueTypeDouble2; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeDouble2Array() { return &g_SdfGetValueTypeDouble2Array; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeDouble3() { return &g_SdfGetValueTypeDouble3; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeDouble3Array() { return &g_SdfGetValueTypeDouble3Array; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeDouble4() { return &g_SdfGetValueTypeDouble4; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeDouble4Array() { return &g_SdfGetValueTypeDouble4Array; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeDoubleArray() { return &g_SdfGetValueTypeDoubleArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeFloat() { return &g_SdfGetValueTypeFloat; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeFloat2() { return &g_SdfGetValueTypeFloat2; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeFloat2Array() { return &g_SdfGetValueTypeFloat2Array; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeFloat3() { return &g_SdfGetValueTypeFloat3; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeFloat3Array() { return &g_SdfGetValueTypeFloat3Array; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeFloat4() { return &g_SdfGetValueTypeFloat4; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeFloat4Array() { return &g_SdfGetValueTypeFloat4Array; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeFloatArray() { return &g_SdfGetValueTypeFloatArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeFrame4d() { return &g_SdfGetValueTypeFrame4d; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeFrame4dArray() { return &g_SdfGetValueTypeFrame4dArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeGroup() { return &g_SdfGetValueTypeGroup; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeHalf() { return &g_SdfGetValueTypeHalf; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeHalf2() { return &g_SdfGetValueTypeHalf2; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeHalf2Array() { return &g_SdfGetValueTypeHalf2Array; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeHalf3() { return &g_SdfGetValueTypeHalf3; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeHalf3Array() { return &g_SdfGetValueTypeHalf3Array; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeHalf4() { return &g_SdfGetValueTypeHalf4; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeHalf4Array() { return &g_SdfGetValueTypeHalf4Array; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeHalfArray() { return &g_SdfGetValueTypeHalfArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeInt() { return &g_SdfGetValueTypeInt; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeInt2() { return &g_SdfGetValueTypeInt2; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeInt2Array() { return &g_SdfGetValueTypeInt2Array; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeInt3() { return &g_SdfGetValueTypeInt3; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeInt3Array() { return &g_SdfGetValueTypeInt3Array; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeInt4() { return &g_SdfGetValueTypeInt4; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeInt4Array() { return &g_SdfGetValueTypeInt4Array; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeInt64() { return &g_SdfGetValueTypeInt64; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeInt64Array() { return &g_SdfGetValueTypeInt64Array; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeIntArray() { return &g_SdfGetValueTypeIntArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeMatrix2d() { return &g_SdfGetValueTypeMatrix2d; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeMatrix2dArray() { return &g_SdfGetValueTypeMatrix2dArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeMatrix3d() { return &g_SdfGetValueTypeMatrix3d; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeMatrix3dArray() { return &g_SdfGetValueTypeMatrix3dArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeMatrix4d() { return &g_SdfGetValueTypeMatrix4d; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeMatrix4dArray() { return &g_SdfGetValueTypeMatrix4dArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeNormal3d() { return &g_SdfGetValueTypeNormal3d; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeNormal3dArray() { return &g_SdfGetValueTypeNormal3dArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeNormal3f() { return &g_SdfGetValueTypeNormal3f; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeNormal3fArray() { return &g_SdfGetValueTypeNormal3fArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeNormal3h() { return &g_SdfGetValueTypeNormal3h; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeNormal3hArray() { return &g_SdfGetValueTypeNormal3hArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeOpaque() { return &g_SdfGetValueTypeOpaque; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypePoint3d() { return &g_SdfGetValueTypePoint3d; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypePoint3dArray() { return &g_SdfGetValueTypePoint3dArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypePoint3f() { return &g_SdfGetValueTypePoint3f; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypePoint3fArray() { return &g_SdfGetValueTypePoint3fArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypePoint3h() { return &g_SdfGetValueTypePoint3h; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypePoint3hArray() { return &g_SdfGetValueTypePoint3hArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeQuatd() { return &g_SdfGetValueTypeQuatd; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeQuatdArray() { return &g_SdfGetValueTypeQuatdArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeQuatf() { return &g_SdfGetValueTypeQuatf; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeQuatfArray() { return &g_SdfGetValueTypeQuatfArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeQuath() { return &g_SdfGetValueTypeQuath; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeQuathArray() { return &g_SdfGetValueTypeQuathArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeString() { return &g_SdfGetValueTypeString; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeStringArray() { return &g_SdfGetValueTypeStringArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeTexCoord2d() { return &g_SdfGetValueTypeTexCoord2d; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeTexCoord2dArray() { return &g_SdfGetValueTypeTexCoord2dArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeTexCoord2f() { return &g_SdfGetValueTypeTexCoord2f; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeTexCoord2fArray() { return &g_SdfGetValueTypeTexCoord2fArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeTexCoord2h() { return &g_SdfGetValueTypeTexCoord2h; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeTexCoord2hArray() { return &g_SdfGetValueTypeTexCoord2hArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeTexCoord3d() { return &g_SdfGetValueTypeTexCoord3d; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeTexCoord3dArray() { return &g_SdfGetValueTypeTexCoord3dArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeTexCoord3f() { return &g_SdfGetValueTypeTexCoord3f; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeTexCoord3fArray() { return &g_SdfGetValueTypeTexCoord3fArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeTexCoord3h() { return &g_SdfGetValueTypeTexCoord3h; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeTexCoord3hArray() { return &g_SdfGetValueTypeTexCoord3hArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeTimeCode() { return &g_SdfGetValueTypeTimeCode; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeTimeCodeArray() { return &g_SdfGetValueTypeTimeCodeArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeToken() { return &g_SdfGetValueTypeToken; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeTokenArray() { return &g_SdfGetValueTypeTokenArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeUChar() { return &g_SdfGetValueTypeUChar; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeUCharArray() { return &g_SdfGetValueTypeUCharArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeUInt() { return &g_SdfGetValueTypeUInt; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeUInt64() { return &g_SdfGetValueTypeUInt64; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeUInt64Array() { return &g_SdfGetValueTypeUInt64Array; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeUIntArray() { return &g_SdfGetValueTypeUIntArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeVector3d() { return &g_SdfGetValueTypeVector3d; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeVector3dArray() { return &g_SdfGetValueTypeVector3dArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeVector3f() { return &g_SdfGetValueTypeVector3f; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeVector3fArray() { return &g_SdfGetValueTypeVector3fArray; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeVector3h() { return &g_SdfGetValueTypeVector3h; }
-extern "C" __declspec(dllexport) void *__cdecl CSharp_pxr_SdfGetValueTypeVector3hArray() { return &g_SdfGetValueTypeVector3hArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeAsset() { return &g_SdfGetValueTypeAsset; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeAssetArray() { return &g_SdfGetValueTypeAssetArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeBool() { return &g_SdfGetValueTypeBool; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeBoolArray() { return &g_SdfGetValueTypeBoolArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeColor3d() { return &g_SdfGetValueTypeColor3d; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeColor3dArray() { return &g_SdfGetValueTypeColor3dArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeColor3f() { return &g_SdfGetValueTypeColor3f; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeColor3fArray() { return &g_SdfGetValueTypeColor3fArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeColor3h() { return &g_SdfGetValueTypeColor3h; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeColor3hArray() { return &g_SdfGetValueTypeColor3hArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeColor4d() { return &g_SdfGetValueTypeColor4d; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeColor4dArray() { return &g_SdfGetValueTypeColor4dArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeColor4f() { return &g_SdfGetValueTypeColor4f; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeColor4fArray() { return &g_SdfGetValueTypeColor4fArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeColor4h() { return &g_SdfGetValueTypeColor4h; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeColor4hArray() { return &g_SdfGetValueTypeColor4hArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeDouble() { return &g_SdfGetValueTypeDouble; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeDouble2() { return &g_SdfGetValueTypeDouble2; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeDouble2Array() { return &g_SdfGetValueTypeDouble2Array; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeDouble3() { return &g_SdfGetValueTypeDouble3; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeDouble3Array() { return &g_SdfGetValueTypeDouble3Array; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeDouble4() { return &g_SdfGetValueTypeDouble4; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeDouble4Array() { return &g_SdfGetValueTypeDouble4Array; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeDoubleArray() { return &g_SdfGetValueTypeDoubleArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeFloat() { return &g_SdfGetValueTypeFloat; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeFloat2() { return &g_SdfGetValueTypeFloat2; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeFloat2Array() { return &g_SdfGetValueTypeFloat2Array; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeFloat3() { return &g_SdfGetValueTypeFloat3; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeFloat3Array() { return &g_SdfGetValueTypeFloat3Array; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeFloat4() { return &g_SdfGetValueTypeFloat4; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeFloat4Array() { return &g_SdfGetValueTypeFloat4Array; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeFloatArray() { return &g_SdfGetValueTypeFloatArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeFrame4d() { return &g_SdfGetValueTypeFrame4d; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeFrame4dArray() { return &g_SdfGetValueTypeFrame4dArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeGroup() { return &g_SdfGetValueTypeGroup; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeHalf() { return &g_SdfGetValueTypeHalf; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeHalf2() { return &g_SdfGetValueTypeHalf2; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeHalf2Array() { return &g_SdfGetValueTypeHalf2Array; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeHalf3() { return &g_SdfGetValueTypeHalf3; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeHalf3Array() { return &g_SdfGetValueTypeHalf3Array; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeHalf4() { return &g_SdfGetValueTypeHalf4; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeHalf4Array() { return &g_SdfGetValueTypeHalf4Array; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeHalfArray() { return &g_SdfGetValueTypeHalfArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeInt() { return &g_SdfGetValueTypeInt; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeInt2() { return &g_SdfGetValueTypeInt2; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeInt2Array() { return &g_SdfGetValueTypeInt2Array; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeInt3() { return &g_SdfGetValueTypeInt3; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeInt3Array() { return &g_SdfGetValueTypeInt3Array; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeInt4() { return &g_SdfGetValueTypeInt4; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeInt4Array() { return &g_SdfGetValueTypeInt4Array; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeInt64() { return &g_SdfGetValueTypeInt64; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeInt64Array() { return &g_SdfGetValueTypeInt64Array; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeIntArray() { return &g_SdfGetValueTypeIntArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeMatrix2d() { return &g_SdfGetValueTypeMatrix2d; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeMatrix2dArray() { return &g_SdfGetValueTypeMatrix2dArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeMatrix3d() { return &g_SdfGetValueTypeMatrix3d; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeMatrix3dArray() { return &g_SdfGetValueTypeMatrix3dArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeMatrix4d() { return &g_SdfGetValueTypeMatrix4d; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeMatrix4dArray() { return &g_SdfGetValueTypeMatrix4dArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeNormal3d() { return &g_SdfGetValueTypeNormal3d; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeNormal3dArray() { return &g_SdfGetValueTypeNormal3dArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeNormal3f() { return &g_SdfGetValueTypeNormal3f; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeNormal3fArray() { return &g_SdfGetValueTypeNormal3fArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeNormal3h() { return &g_SdfGetValueTypeNormal3h; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeNormal3hArray() { return &g_SdfGetValueTypeNormal3hArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeOpaque() { return &g_SdfGetValueTypeOpaque; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypePoint3d() { return &g_SdfGetValueTypePoint3d; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypePoint3dArray() { return &g_SdfGetValueTypePoint3dArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypePoint3f() { return &g_SdfGetValueTypePoint3f; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypePoint3fArray() { return &g_SdfGetValueTypePoint3fArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypePoint3h() { return &g_SdfGetValueTypePoint3h; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypePoint3hArray() { return &g_SdfGetValueTypePoint3hArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeQuatd() { return &g_SdfGetValueTypeQuatd; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeQuatdArray() { return &g_SdfGetValueTypeQuatdArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeQuatf() { return &g_SdfGetValueTypeQuatf; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeQuatfArray() { return &g_SdfGetValueTypeQuatfArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeQuath() { return &g_SdfGetValueTypeQuath; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeQuathArray() { return &g_SdfGetValueTypeQuathArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeString() { return &g_SdfGetValueTypeString; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeStringArray() { return &g_SdfGetValueTypeStringArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeTexCoord2d() { return &g_SdfGetValueTypeTexCoord2d; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeTexCoord2dArray() { return &g_SdfGetValueTypeTexCoord2dArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeTexCoord2f() { return &g_SdfGetValueTypeTexCoord2f; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeTexCoord2fArray() { return &g_SdfGetValueTypeTexCoord2fArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeTexCoord2h() { return &g_SdfGetValueTypeTexCoord2h; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeTexCoord2hArray() { return &g_SdfGetValueTypeTexCoord2hArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeTexCoord3d() { return &g_SdfGetValueTypeTexCoord3d; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeTexCoord3dArray() { return &g_SdfGetValueTypeTexCoord3dArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeTexCoord3f() { return &g_SdfGetValueTypeTexCoord3f; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeTexCoord3fArray() { return &g_SdfGetValueTypeTexCoord3fArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeTexCoord3h() { return &g_SdfGetValueTypeTexCoord3h; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeTexCoord3hArray() { return &g_SdfGetValueTypeTexCoord3hArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeTimeCode() { return &g_SdfGetValueTypeTimeCode; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeTimeCodeArray() { return &g_SdfGetValueTypeTimeCodeArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeToken() { return &g_SdfGetValueTypeToken; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeTokenArray() { return &g_SdfGetValueTypeTokenArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeUChar() { return &g_SdfGetValueTypeUChar; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeUCharArray() { return &g_SdfGetValueTypeUCharArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeUInt() { return &g_SdfGetValueTypeUInt; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeUInt64() { return &g_SdfGetValueTypeUInt64; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeUInt64Array() { return &g_SdfGetValueTypeUInt64Array; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeUIntArray() { return &g_SdfGetValueTypeUIntArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeVector3d() { return &g_SdfGetValueTypeVector3d; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeVector3dArray() { return &g_SdfGetValueTypeVector3dArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeVector3f() { return &g_SdfGetValueTypeVector3f; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeVector3fArray() { return &g_SdfGetValueTypeVector3fArray; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeVector3h() { return &g_SdfGetValueTypeVector3h; }
+extern "C" USDCS_EXPORT void *__cdecl CSharp_pxr_SdfGetValueTypeVector3hArray() { return &g_SdfGetValueTypeVector3hArray; }
 #pragma endregion
 // // Gf math
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_GfMatrix4d__SWIG_1(
     double jarg1,  double jarg2,  double jarg3,  double jarg4,
     double jarg5,  double jarg6,  double jarg7,  double jarg8,
@@ -390,22 +395,22 @@ void* __cdecl CSharp_pxr_new_GfMatrix4d__SWIG_1(
     );
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_GfVec2f__SWIG_2(float jarg1, float jarg2)
 {
     return new pxr::GfVec2f(jarg1, jarg2);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_GfVec3f__SWIG_2(float jarg1, float jarg2, float jarg3)
 {
     return new pxr::GfVec3f(jarg1, jarg2, jarg3);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_VtValue__SWIG_16(int p0)
 {
     return new pxr::VtValue(p0);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_GfVec4f__SWIG_2(float jarg1, float jarg2, float jarg3, float jarg4)
 {
     return new pxr::GfVec4f(jarg1, jarg2, jarg3, jarg4);
@@ -413,7 +418,7 @@ void* __cdecl CSharp_pxr_new_GfVec4f__SWIG_2(float jarg1, float jarg2, float jar
 
 // // Values
 // Usd core types
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_UsdStage(void* jarg1)
 {
     using StageHandle = pxr::TfRefPtr<pxr::UsdStage>;
@@ -421,61 +426,61 @@ void __cdecl CSharp_pxr_delete_UsdStage(void* jarg1)
     delete handle; // this decrefs the underlying UsdStage correctly
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_UsdPrim(void* p0)
 {
     delete static_cast<pxr::UsdPrim*>(p0);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_UsdAttribute(void* p0)
 {
     delete static_cast<pxr::UsdAttribute*>(p0);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_UsdTimeCode(void* p0)
 {
     delete static_cast<pxr::UsdTimeCode*>(p0);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_UsdObject(void* p0); // only if you had such a function, otherwise skip
 
 
 // UsdGeom / UsdShade / UsdUtils
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_UsdGeomImageable(void* p0)
 {
     delete static_cast<pxr::UsdGeomImageable*>(p0);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_UsdGeomPrimvar(void* p0)
 {
     delete static_cast<pxr::UsdGeomPrimvar*>(p0);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_UsdGeomPrimvarsAPI(void* p0)
 {
     delete static_cast<pxr::UsdGeomPrimvarsAPI*>(p0);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_UsdShadeMaterial(void* p0)
 {
     delete static_cast<pxr::UsdShadeMaterial*>(p0);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_UsdShadeMaterialBindingAPI(void* p0)
 {
     delete static_cast<pxr::UsdShadeMaterialBindingAPI*>(p0);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_UsdUtilsSparseValueWriter(void* p0)
 {
     delete static_cast<pxr::UsdUtilsSparseValueWriter*>(p0);
@@ -484,25 +489,25 @@ void __cdecl CSharp_pxr_delete_UsdUtilsSparseValueWriter(void* p0)
 
 // Sdf / Tf
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_SdfPath(void* p0)
 {
     delete static_cast<pxr::SdfPath*>(p0);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_SdfAssetPath(void* p0)
 {
     delete static_cast<pxr::SdfAssetPath*>(p0);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_SdfValueTypeName(void* p0)
 {
     delete static_cast<pxr::SdfValueTypeName*>(p0);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_TfToken(void* p0)
 {
     delete static_cast<pxr::TfToken*>(p0);
@@ -510,7 +515,7 @@ void __cdecl CSharp_pxr_delete_TfToken(void* p0)
 
 // This is the delegate type SWIG uses for TfDiagnosticMgr::Delegate.
 // If your original SWIG delete took this pointer, this is correct:
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_TfDiagnosticMgr_Delegate(void* p0)
 {
     delete static_cast<pxr::TfDiagnosticMgr::Delegate*>(p0);
@@ -519,25 +524,25 @@ void __cdecl CSharp_pxr_delete_TfDiagnosticMgr_Delegate(void* p0)
 
 // Gf math types
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_GfVec2f(void* p0)
 {
     delete static_cast<pxr::GfVec2f*>(p0);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_GfVec3f(void* p0)
 {
     delete static_cast<pxr::GfVec3f*>(p0);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_GfVec4f(void* p0)
 {
     delete static_cast<pxr::GfVec4f*>(p0);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_GfMatrix4d(void* p0)
 {
     delete static_cast<pxr::GfMatrix4d*>(p0);
@@ -546,37 +551,37 @@ void __cdecl CSharp_pxr_delete_GfMatrix4d(void* p0)
 
 // VtValue + Vt arrays
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_VtValue(void* p0)
 {
     delete static_cast<pxr::VtValue*>(p0);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_VtTokenArray(void* p0)
 {
     delete static_cast<pxr::VtArray<pxr::TfToken>*>(p0);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_VtVec3fArray(void* p0)
 {
     delete static_cast<pxr::VtArray<pxr::GfVec3f>*>(p0);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_VtVec4fArray(void* p0)
 {
     delete static_cast<pxr::VtArray<pxr::GfVec4f>*>(p0);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_VtVec2fArray(void* p0)
 {
     delete static_cast<pxr::VtArray<pxr::GfVec2f>*>(p0);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_VtIntArray(void* p0)
 {
     delete static_cast<pxr::VtArray<int>*>(p0);
@@ -585,25 +590,25 @@ void __cdecl CSharp_pxr_delete_VtIntArray(void* p0)
 
 // std::vector wrappers
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_StdStringVector(void* p0)
 {
     delete static_cast<std::vector<std::string>*>(p0);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_delete_SdfPathVector(void* p0)
 {
     delete static_cast<std::vector<pxr::SdfPath>*>(p0);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_VtIntArray__SWIG_3(unsigned long jarg1)
 {
     size_t count = static_cast<size_t>(jarg1);
     return new pxr::VtArray<int>(count);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_VtTokenArray__SWIG_3(unsigned long jarg1)
 {
     size_t count = static_cast<size_t>(jarg1);
@@ -612,7 +617,7 @@ void* __cdecl CSharp_pxr_new_VtTokenArray__SWIG_3(unsigned long jarg1)
 
 
 // UsdPrim → UsdObject
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 pxr::UsdObject* __cdecl CSharp_pxr_UsdPrim_SWIGUpcast(pxr::UsdPrim* jarg1)
 {
     
@@ -620,7 +625,7 @@ pxr::UsdObject* __cdecl CSharp_pxr_UsdPrim_SWIGUpcast(pxr::UsdPrim* jarg1)
 }
 
 // VtArray<TfToken> → Vt_ArrayBase
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 pxr::Vt_ArrayBase* __cdecl CSharp_pxr_VtTokenArray_SWIGUpcast(pxr::VtArray<pxr::TfToken>* jarg1)
 {
     
@@ -628,7 +633,7 @@ pxr::Vt_ArrayBase* __cdecl CSharp_pxr_VtTokenArray_SWIGUpcast(pxr::VtArray<pxr::
 }
 
 // VtArray<int> → Vt_ArrayBase
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 pxr::Vt_ArrayBase* __cdecl CSharp_pxr_VtIntArray_SWIGUpcast(pxr::VtArray<int>* jarg1)
 {
     
@@ -636,7 +641,7 @@ pxr::Vt_ArrayBase* __cdecl CSharp_pxr_VtIntArray_SWIGUpcast(pxr::VtArray<int>* j
 }
 
 // VtArray<GfVec3f> → Vt_ArrayBase
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 pxr::Vt_ArrayBase* __cdecl CSharp_pxr_VtVec3fArray_SWIGUpcast(pxr::VtArray<pxr::GfVec3f>* jarg1)
 {
     
@@ -644,7 +649,7 @@ pxr::Vt_ArrayBase* __cdecl CSharp_pxr_VtVec3fArray_SWIGUpcast(pxr::VtArray<pxr::
 }
 
 // UsdAPISchemaBase → UsdSchemaBase
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 pxr::UsdSchemaBase* __cdecl CSharp_pxr_UsdAPISchemaBase_SWIGUpcast(pxr::UsdAPISchemaBase* jarg1)
 {
     
@@ -652,7 +657,7 @@ pxr::UsdSchemaBase* __cdecl CSharp_pxr_UsdAPISchemaBase_SWIGUpcast(pxr::UsdAPISc
 }
 
 // VtArray<GfVec4f> → Vt_ArrayBase
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 pxr::Vt_ArrayBase* __cdecl CSharp_pxr_VtVec4fArray_SWIGUpcast(pxr::VtArray<pxr::GfVec4f>* jarg1)
 {
     
@@ -660,7 +665,7 @@ pxr::Vt_ArrayBase* __cdecl CSharp_pxr_VtVec4fArray_SWIGUpcast(pxr::VtArray<pxr::
 }
 
 // VtArray<GfVec2f> → Vt_ArrayBase
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 pxr::Vt_ArrayBase* __cdecl CSharp_pxr_VtVec2fArray_SWIGUpcast(pxr::VtArray<pxr::GfVec2f>* jarg1)
 {
     
@@ -668,7 +673,7 @@ pxr::Vt_ArrayBase* __cdecl CSharp_pxr_VtVec2fArray_SWIGUpcast(pxr::VtArray<pxr::
 }
 
 // UsdGeomImageable → UsdTyped
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 pxr::UsdTyped* __cdecl CSharp_pxr_UsdGeomImageable_SWIGUpcast(pxr::UsdGeomImageable* jarg1)
 {
     
@@ -676,7 +681,7 @@ pxr::UsdTyped* __cdecl CSharp_pxr_UsdGeomImageable_SWIGUpcast(pxr::UsdGeomImagea
 }
 
 // UsdTyped → UsdSchemaBase
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 pxr::UsdSchemaBase* __cdecl CSharp_pxr_UsdTyped_SWIGUpcast(pxr::UsdTyped* jarg1)
 {
     
@@ -684,7 +689,7 @@ pxr::UsdSchemaBase* __cdecl CSharp_pxr_UsdTyped_SWIGUpcast(pxr::UsdTyped* jarg1)
 }
 
 // UsdAttribute → UsdProperty
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 pxr::UsdProperty* __cdecl CSharp_pxr_UsdAttribute_SWIGUpcast(pxr::UsdAttribute* jarg1)
 {
     
@@ -692,14 +697,14 @@ pxr::UsdProperty* __cdecl CSharp_pxr_UsdAttribute_SWIGUpcast(pxr::UsdAttribute* 
 }
 
 // UsdProperty → UsdObject
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 pxr::UsdObject* __cdecl CSharp_pxr_UsdProperty_SWIGUpcast(pxr::UsdProperty* jarg1)
 {
     
     return static_cast<pxr::UsdObject*>(jarg1);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_VtValue__SWIG_17(void* p0)
 {
     
@@ -707,7 +712,7 @@ void* __cdecl CSharp_pxr_new_VtValue__SWIG_17(void* p0)
     if (!arr) return nullptr;
     return new pxr::VtValue(*arr);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_VtValue__SWIG_36(void* p0)
 {
     
@@ -715,7 +720,7 @@ void* __cdecl CSharp_pxr_new_VtValue__SWIG_36(void* p0)
     if (!v) return nullptr;
     return new pxr::VtValue(*v);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_VtValue__SWIG_37(void* p0)
 {
     
@@ -723,7 +728,7 @@ void* __cdecl CSharp_pxr_new_VtValue__SWIG_37(void* p0)
     if (!arr) return nullptr;
     return new pxr::VtValue(*arr);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_VtValue__SWIG_38(void* p0)
 {
     
@@ -731,7 +736,7 @@ void* __cdecl CSharp_pxr_new_VtValue__SWIG_38(void* p0)
     if (!v) return nullptr;
     return new pxr::VtValue(*v);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_VtValue__SWIG_39(void* p0)
 {
     
@@ -739,7 +744,7 @@ void* __cdecl CSharp_pxr_new_VtValue__SWIG_39(void* p0)
     if (!arr) return nullptr;
     return new pxr::VtValue(*arr);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_VtValue__SWIG_40(void* p0)
 {
     
@@ -747,7 +752,7 @@ void* __cdecl CSharp_pxr_new_VtValue__SWIG_40(void* p0)
     if (!v) return nullptr;
     return new pxr::VtValue(*v);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_VtValue__SWIG_41(void* p0)
 {
     
@@ -756,18 +761,18 @@ void* __cdecl CSharp_pxr_new_VtValue__SWIG_41(void* p0)
     return new pxr::VtValue(*arr);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_VtValue__SWIG_4(double p0)
 {
     return new pxr::VtValue(p0);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_VtValue__SWIG_10(bool p0)
 {
     return new pxr::VtValue(p0);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_VtValue__SWIG_48(void* p0)
 {
     
@@ -776,7 +781,7 @@ void* __cdecl CSharp_pxr_new_VtValue__SWIG_48(void* p0)
 
     return new pxr::VtValue(*mat);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_VtValue__SWIG_72(void* p0)
 {
     
@@ -784,7 +789,7 @@ void* __cdecl CSharp_pxr_new_VtValue__SWIG_72(void* p0)
     if (!tok) return nullptr;
     return new pxr::VtValue(*tok);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_VtValue__SWIG_73(void* p0)
 {
     
@@ -792,7 +797,7 @@ void* __cdecl CSharp_pxr_new_VtValue__SWIG_73(void* p0)
     if (!arr) return nullptr;
     return new pxr::VtValue(*arr);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_VtValue__SWIG_70(const char* p0)
 {
     if (!p0)
@@ -801,7 +806,7 @@ void* __cdecl CSharp_pxr_new_VtValue__SWIG_70(const char* p0)
     std::string s(p0);
     return new pxr::VtValue(s);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_VtValue__SWIG_89(void* p0)
 {
     
@@ -809,13 +814,13 @@ void* __cdecl CSharp_pxr_new_VtValue__SWIG_89(void* p0)
     if (!path) return nullptr;
     return new pxr::VtValue(*path);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_VtValue__SWIG_6(float p0)
 {
     return new pxr::VtValue(p0);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_VtVec2fArray__SWIG_3(unsigned long jarg1)
 {
     size_t count = static_cast<size_t>(jarg1);
@@ -824,14 +829,14 @@ void* __cdecl CSharp_pxr_new_VtVec2fArray__SWIG_3(unsigned long jarg1)
     return arr;
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_VtVec3fArray__SWIG_3(unsigned long jarg1)
 {
     size_t count = static_cast<size_t>(jarg1);
     return new pxr::VtArray<pxr::GfVec3f>(count);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_VtVec4fArray__SWIG_3(unsigned long jarg1)
 {
     size_t count = static_cast<size_t>(jarg1);
@@ -840,7 +845,7 @@ void* __cdecl CSharp_pxr_new_VtVec4fArray__SWIG_3(unsigned long jarg1)
     return arr;
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_VtValueToTfToken__SWIG_0(void* jarg1)
 {
     auto* v = static_cast<const pxr::VtValue*>(jarg1);
@@ -852,7 +857,7 @@ void* __cdecl CSharp_pxr_VtValueToTfToken__SWIG_0(void* jarg1)
     return new pxr::TfToken(tok);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_VtValueToVtVec4fArray__SWIG_0(void* jarg1)
 {
     auto* v = static_cast<const pxr::VtValue*>(jarg1);
@@ -864,7 +869,7 @@ void* __cdecl CSharp_pxr_VtValueToVtVec4fArray__SWIG_0(void* jarg1)
 }
 
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_VtIntArray_CopyFromArray__SWIG_1(void* jarg1, void* jarg2)
 {
     auto* dst = static_cast<pxr::VtArray<int>*>(jarg1);
@@ -881,7 +886,7 @@ void __cdecl CSharp_pxr_VtIntArray_CopyFromArray__SWIG_1(void* jarg1, void* jarg
         (*dst)[i] = src[i];
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_VtTokenArray_SetValue(void* jarg1, int jarg2, void* jarg3)
 {
     auto* arr   = static_cast<pxr::VtArray<pxr::TfToken>*>(jarg1);
@@ -898,7 +903,7 @@ void __cdecl CSharp_pxr_VtTokenArray_SetValue(void* jarg1, int jarg2, void* jarg
 }
 
 // VtArray<GfVec2f> ← raw GfVec2f[]
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_VtVec2fArray_CopyFromArray__SWIG_1(void* jarg1, void* jarg2)
 {
     auto* dst = static_cast<pxr::VtArray<pxr::GfVec2f>*>(jarg1);
@@ -913,7 +918,7 @@ void __cdecl CSharp_pxr_VtVec2fArray_CopyFromArray__SWIG_1(void* jarg1, void* ja
 }
 
 // VtArray<GfVec3f> ← raw GfVec3f[]
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_VtVec3fArray_CopyFromArray__SWIG_1(void* jarg1, void* jarg2)
 {
     auto* dst = static_cast<pxr::VtArray<pxr::GfVec3f>*>(jarg1);
@@ -928,7 +933,7 @@ void __cdecl CSharp_pxr_VtVec3fArray_CopyFromArray__SWIG_1(void* jarg1, void* ja
 }
 
 // VtArray<GfVec3f>[index] = value
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_VtVec3fArray_SetValue(void* jarg1, int jarg2, void* jarg3)
 {
     auto* arr  = static_cast<pxr::VtArray<pxr::GfVec3f>*>(jarg1);
@@ -945,7 +950,7 @@ void __cdecl CSharp_pxr_VtVec3fArray_SetValue(void* jarg1, int jarg2, void* jarg
 }
 
 // VtArray<GfVec4f> ← raw GfVec4f[]
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_VtVec4fArray_CopyFromArray__SWIG_1(void* jarg1, void* jarg2)
 {
     auto* dst = static_cast<pxr::VtArray<pxr::GfVec4f>*>(jarg1);
@@ -961,7 +966,7 @@ void __cdecl CSharp_pxr_VtVec4fArray_CopyFromArray__SWIG_1(void* jarg1, void* ja
 
 
 // // usd stage
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdStage_CreateNew__SWIG_1(char* jarg1)
 {
         
@@ -978,7 +983,7 @@ void* __cdecl CSharp_pxr_UsdStage_CreateNew__SWIG_1(char* jarg1)
     // SWIG expects a pointer to UsdStageRefPtr (TfRefPtr<UsdStage>)
     return new pxr::UsdStageRefPtr(stage);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdStage_DefinePrim__SWIG_0(void* jarg1, void* jarg2, void* jarg3)
 {
     // jarg1: TfRefPtr<UsdStage>
@@ -1001,7 +1006,7 @@ void* __cdecl CSharp_pxr_UsdStage_DefinePrim__SWIG_0(void* jarg1, void* jarg2, v
     // SWIG returns a heap-allocated UsdPrim copy
     return new pxr::UsdPrim(prim);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdStage_GetEditTarget(void* jarg1)
 {
     
@@ -1024,7 +1029,7 @@ void* __cdecl CSharp_pxr_UsdStage_GetEditTarget(void* jarg1)
 
     return const_cast<pxr::UsdEditTarget*>(&et);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 unsigned int __cdecl CSharp_pxr_UsdStage_GetMetadata(void* jarg1, void* jarg2, void* jarg3)
 {
     // jarg1: TfRefPtr<const UsdStage>
@@ -1050,7 +1055,7 @@ unsigned int __cdecl CSharp_pxr_UsdStage_GetMetadata(void* jarg1, void* jarg2, v
 }
 
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdStage_GetPrimAtPath(void* jarg1, void* jarg2)
 {
     
@@ -1074,7 +1079,7 @@ void* __cdecl CSharp_pxr_UsdStage_GetPrimAtPath(void* jarg1, void* jarg2)
     return new pxr::UsdPrim(prim);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 unsigned int __cdecl CSharp_pxr_UsdStage_SetMetadata(void* jarg1, void* jarg2, void* jarg3)
 {
     
@@ -1097,7 +1102,7 @@ unsigned int __cdecl CSharp_pxr_UsdStage_SetMetadata(void* jarg1, void* jarg2, v
     return ok ? 1u : 0u;
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_UsdStage_Save(void* jarg1)
 {
     // jarg1 is TfRefPtr<UsdStage>
@@ -1109,7 +1114,7 @@ void __cdecl CSharp_pxr_UsdStage_Save(void* jarg1)
 
     stage->Save();
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_UsdStage_SetDefaultPrim(void* jarg1, void* jarg2)
 {
     // jarg1 is a TfRefPtr<UsdStage>
@@ -1126,7 +1131,7 @@ void __cdecl CSharp_pxr_UsdStage_SetDefaultPrim(void* jarg1, void* jarg2)
 
 
 // // usd - object
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_UsdObject_SetCustomDataByKey(void* jarg1, void* jarg2, void* jarg3)
 {
     auto* obj   = static_cast<pxr::UsdObject*>(jarg1);
@@ -1139,7 +1144,7 @@ void __cdecl CSharp_pxr_UsdObject_SetCustomDataByKey(void* jarg1, void* jarg2, v
     obj->SetCustomDataByKey(*key, *value);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 unsigned int __cdecl CSharp_pxr_UsdAttribute_SetConnections(void* jarg1, void* jarg2)
 {
     auto* attr = static_cast<const pxr::UsdAttribute*>(jarg1);
@@ -1152,7 +1157,7 @@ unsigned int __cdecl CSharp_pxr_UsdAttribute_SetConnections(void* jarg1, void* j
     return ok ? 1u : 0u;
 }
 // // usd - time/edit target
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_UsdTimeCode__SWIG_0(double jarg1)
 {
     
@@ -1163,13 +1168,13 @@ void* __cdecl CSharp_pxr_new_UsdTimeCode__SWIG_0(double jarg1)
     auto* tc = new pxr::UsdTimeCode(time);
     return static_cast<void*>(tc);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdTimeCode_Default()
 {
     UsdTimeCode result = UsdTimeCode::Default();
     return new UsdTimeCode(result);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdEditTarget_GetLayer(void* jarg1)
 {
     
@@ -1185,7 +1190,7 @@ void* __cdecl CSharp_pxr_UsdEditTarget_GetLayer(void* jarg1)
 }
 
 // // usd - prim
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdPrim_CreateAttribute__SWIG_0(
     void*        jarg1,
     void*        jarg2,
@@ -1208,12 +1213,12 @@ void* __cdecl CSharp_pxr_UsdPrim_CreateAttribute__SWIG_0(
 
     return new pxr::UsdAttribute(attr);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_VtValue__SWIG_0()
 {
     return new pxr::VtValue();
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdPrim_CreateAttribute__SWIG_4(
     void*       jarg1,
     void*       jarg2,
@@ -1236,7 +1241,7 @@ void* __cdecl CSharp_pxr_UsdPrim_CreateAttribute__SWIG_4(
 
     return new pxr::UsdAttribute(attr);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdPrim_GetAttribute(void* jarg1, void* jarg2)
 {
     auto* prim  = static_cast<const pxr::UsdPrim*>(jarg1);
@@ -1249,7 +1254,7 @@ void* __cdecl CSharp_pxr_UsdPrim_GetAttribute(void* jarg1, void* jarg2)
     return new pxr::UsdAttribute(attr);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdPrim_GetTypeName(void* jarg1)
 {
     if (!jarg1)
@@ -1264,7 +1269,7 @@ void* __cdecl CSharp_pxr_UsdPrim_GetTypeName(void* jarg1)
     return const_cast<pxr::TfToken*>(&t);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 unsigned int __cdecl CSharp_pxr_UsdPrim_SetTypeName(void* jarg1, void* jarg2)
 {
     auto* prim  = static_cast<pxr::UsdPrim*>(jarg1);
@@ -1279,7 +1284,7 @@ unsigned int __cdecl CSharp_pxr_UsdPrim_SetTypeName(void* jarg1, void* jarg2)
 
 // // usd - deletes
 // // usd - object/property
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 unsigned int __cdecl CSharp_pxr_UsdObject__IsValid(void* jarg1)
 {
     auto* obj = static_cast<pxr::UsdObject*>(jarg1);
@@ -1290,7 +1295,7 @@ unsigned int __cdecl CSharp_pxr_UsdObject__IsValid(void* jarg1)
     return ok ? 1u : 0u;
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 unsigned int __cdecl CSharp_pxr_UsdObject_IsValid(void* jarg1)
 {
     if (!jarg1)
@@ -1302,7 +1307,7 @@ unsigned int __cdecl CSharp_pxr_UsdObject_IsValid(void* jarg1)
     return valid ? 1u : 0u;
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdSchemaBase_GetPath(void* jarg1)
 {
     auto* schema = static_cast<const pxr::UsdSchemaBase*>(jarg1);
@@ -1313,7 +1318,7 @@ void* __cdecl CSharp_pxr_UsdSchemaBase_GetPath(void* jarg1)
     return new pxr::SdfPath(path);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_UsdGeomMesh__SWIG_0(void* jarg1)
 {
     auto* prim = static_cast<const pxr::UsdPrim*>(jarg1);
@@ -1322,36 +1327,36 @@ void* __cdecl CSharp_pxr_new_UsdGeomMesh__SWIG_0(void* jarg1)
 
     return new pxr::UsdGeomMesh(*prim);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdGeomBoundable_SWIGUpcast(void* jarg1)
 {
     return (pxr::UsdGeomXformable*) jarg1;
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdGeomGprim_SWIGUpcast(void* jarg1)
 {
     return (pxr::UsdGeomBoundable*) jarg1;
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdGeomMesh_SWIGUpcast(void* jarg1)
 {
     return (pxr::UsdGeomPointBased*) jarg1;
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdGeomXformable_SWIGUpcast(void* jarg1)
 {
     return (pxr::UsdGeomImageable*) jarg1;
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdGeomSubset_SWIGUpcast(void* jarg1)
 {
     return (pxr::UsdTyped*) jarg1;
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdGeomSubset_CreateUniqueGeomSubset__SWIG_1(
     void* jarg1,
     void* jarg2,
@@ -1378,14 +1383,14 @@ void* __cdecl CSharp_pxr_UsdGeomSubset_CreateUniqueGeomSubset__SWIG_1(
 
     return new pxr::UsdGeomSubset(subset);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 pxr::UsdGeomGprim* __cdecl CSharp_pxr_UsdGeomPointBased_SWIGUpcast(
     pxr::UsdGeomPointBased* jarg1)
 {
     return static_cast<pxr::UsdGeomGprim*>(jarg1);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdSchemaBase_GetPrim(void* jarg1)
 {
     auto* schema = static_cast<const pxr::UsdSchemaBase*>(jarg1);
@@ -1395,7 +1400,7 @@ void* __cdecl CSharp_pxr_UsdSchemaBase_GetPrim(void* jarg1)
     pxr::UsdPrim prim = schema->GetPrim();
     return new pxr::UsdPrim(prim);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_UsdGeomPrimvar__SWIG_2(void* p0)
 {
     auto* src = static_cast<pxr::UsdGeomPrimvar*>(p0);
@@ -1406,7 +1411,7 @@ void* __cdecl CSharp_pxr_new_UsdGeomPrimvar__SWIG_2(void* p0)
 }
 
 // // Geom
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_UsdGeomImageable__SWIG_0(void* jarg1)
 {
     auto* prim = static_cast<const pxr::UsdPrim*>(jarg1);
@@ -1419,7 +1424,7 @@ void* __cdecl CSharp_pxr_new_UsdGeomImageable__SWIG_0(void* jarg1)
 
     return img;
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_UsdGeomPrimvarsAPI__SWIG_2(void* p0)
 {
     auto* base = static_cast<pxr::UsdSchemaBase*>(p0);
@@ -1429,7 +1434,7 @@ void* __cdecl CSharp_pxr_new_UsdGeomPrimvarsAPI__SWIG_2(void* p0)
     return new pxr::UsdGeomPrimvarsAPI(*base);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdGeomPrimvar_GetAttr(void* jarg1)
 {
     auto* pv = static_cast<pxr::UsdGeomPrimvar*>(jarg1);
@@ -1444,7 +1449,7 @@ void* __cdecl CSharp_pxr_UsdGeomPrimvar_GetAttr(void* jarg1)
 }
 
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 unsigned int __cdecl CSharp_pxr_UsdGeomPrimvar_SetElementSize(void* jarg1, int jarg2)
 {
     auto* primvar = static_cast<pxr::UsdGeomPrimvar*>(jarg1);
@@ -1455,7 +1460,7 @@ unsigned int __cdecl CSharp_pxr_UsdGeomPrimvar_SetElementSize(void* jarg1, int j
     return ok ? 1u : 0u;
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 unsigned int __cdecl CSharp_pxr_UsdGeomPrimvar_SetInterpolation(void* jarg1, void* jarg2)
 {
     auto* primvar = static_cast<pxr::UsdGeomPrimvar*>(jarg1);
@@ -1468,7 +1473,7 @@ unsigned int __cdecl CSharp_pxr_UsdGeomPrimvar_SetInterpolation(void* jarg1, voi
     return ok ? 1u : 0u;
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdGeomPrimvarsAPI_CreatePrimvar__SWIG_1(
     void* jarg1,
     void* jarg2,
@@ -1490,12 +1495,12 @@ void* __cdecl CSharp_pxr_UsdGeomPrimvarsAPI_CreatePrimvar__SWIG_1(
     return new pxr::UsdGeomPrimvar(pv);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 pxr::UsdAPISchemaBase* __cdecl CSharp_pxr_UsdGeomPrimvarsAPI_SWIGUpcast(pxr::UsdGeomPrimvarsAPI* jarg1)
 {
     return static_cast<pxr::UsdAPISchemaBase*>(jarg1);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_UsdShadeMaterial__SWIG_0(void* jarg1)
 {
     auto* prim = static_cast<const pxr::UsdPrim*>(jarg1);
@@ -1505,7 +1510,7 @@ void* __cdecl CSharp_pxr_new_UsdShadeMaterial__SWIG_0(void* jarg1)
     return new pxr::UsdShadeMaterial(*prim);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_UsdShadeMaterialBindingAPI__SWIG_0(void* jarg1)
 {
     auto* prim = static_cast<const pxr::UsdPrim*>(jarg1);
@@ -1515,13 +1520,13 @@ void* __cdecl CSharp_pxr_new_UsdShadeMaterialBindingAPI__SWIG_0(void* jarg1)
     return new pxr::UsdShadeMaterialBindingAPI(*prim);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdShadeMaterial_SWIGUpcast(void* jarg1)
 {
     return (pxr::UsdShadeNodeGraph*) jarg1;
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdShadeMaterialBindingAPI_Apply(void* jarg1)
 {
     auto* prim = static_cast<const pxr::UsdPrim*>(jarg1);
@@ -1534,7 +1539,7 @@ void* __cdecl CSharp_pxr_UsdShadeMaterialBindingAPI_Apply(void* jarg1)
     return new pxr::UsdShadeMaterialBindingAPI(api);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 unsigned int __cdecl CSharp_pxr_UsdShadeMaterialBindingAPI_Bind__SWIG_2(
     void* jarg1,
     void* jarg2)
@@ -1549,13 +1554,13 @@ unsigned int __cdecl CSharp_pxr_UsdShadeMaterialBindingAPI_Bind__SWIG_2(
     return ok ? 1u : 0u;
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdShadeMaterialBindingAPI_SWIGUpcast(void* jarg1)
 {
     return (pxr::UsdAPISchemaBase*)jarg1;
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdShadeNodeGraph_SWIGUpcast(void* jarg1)
 {
     return (pxr::UsdTyped*) jarg1;
@@ -1564,12 +1569,12 @@ void* __cdecl CSharp_pxr_UsdShadeNodeGraph_SWIGUpcast(void* jarg1)
 
 
 // // utils
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_UsdUtilsSparseValueWriter()
 {
     return new UsdUtilsSparseValueWriter();
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 unsigned int __cdecl CSharp_pxr_UsdUtilsCreateNewARKitUsdzPackage__SWIG_1(
     void* jarg1,
     char* jarg2)
@@ -1585,7 +1590,7 @@ unsigned int __cdecl CSharp_pxr_UsdUtilsCreateNewARKitUsdzPackage__SWIG_1(
     return ok ? 1u : 0u;
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 unsigned int __cdecl CSharp_pxr_UsdUtilsSparseValueWriter_SetAttribute__SWIG_0(
     void* jarg1,
     void* jarg2,
@@ -1607,8 +1612,8 @@ unsigned int __cdecl CSharp_pxr_UsdUtilsSparseValueWriter_SetAttribute__SWIG_0(
 
 
 // // tokens
-extern "C" __declspec(dllexport)
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
+extern "C" USDCS_EXPORT
 char* __cdecl CSharp_pxr_TfMakeValidIdentifier(char* jarg1)
 {
     
@@ -1627,14 +1632,14 @@ char* __cdecl CSharp_pxr_TfMakeValidIdentifier(char* jarg1)
 
     return cb(result.c_str());
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_SdfValueTypeName_GetAsToken(void* jarg1)
 {
     auto* arg1 = static_cast<SdfValueTypeName*>(jarg1);
     TfToken result = arg1->GetAsToken();
     return new TfToken(result);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_TfToken__SWIG_3(char* jarg1)
 {
     if (!jarg1)
@@ -1644,7 +1649,7 @@ void* __cdecl CSharp_pxr_new_TfToken__SWIG_3(char* jarg1)
     
     return new pxr::TfToken(s);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 char* __cdecl CSharp_pxr_TfToken_GetText(void* jarg1)
 {
     auto* arg1 = static_cast<TfToken*>(jarg1);
@@ -1657,21 +1662,21 @@ char* __cdecl CSharp_pxr_TfToken_GetText(void* jarg1)
     return cb ? cb(text) : nullptr;
 }
 // // tf - diagnostics
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_TfDiagnosticMgr_AddDelegate(void* p0, void* p1)
 {
     // Stub – ignore diagnostic delegate registration for now.
     (void)p0;
     (void)p1;
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_TfDiagnosticMgr_Delegate_director_connect(
     void* p0, void* p1, void* p2, void* p3, void* p4)
 {
     // stub – we ignore diagnostic delegate wiring for now
     (void)p0; (void)p1; (void)p2; (void)p3; (void)p4;
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_TfDiagnosticMgr_Delegate()
 {
     // TODO: real TfDiagnosticMgr_Delegate implementation if we ever need it.
@@ -1679,7 +1684,7 @@ void* __cdecl CSharp_pxr_new_TfDiagnosticMgr_Delegate()
     static int dummy;
     return &dummy;
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_TfDiagnosticMgr_GetInstance()
 {
     // TODO: real implementation if needed.
@@ -1689,7 +1694,7 @@ void* __cdecl CSharp_pxr_TfDiagnosticMgr_GetInstance()
 }
 
 // // sdf
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_SdfLayerHandle_SetEndTimeCode(void* jarg1, double jarg2)
 {
     
@@ -1706,7 +1711,7 @@ void __cdecl CSharp_pxr_SdfLayerHandle_SetEndTimeCode(void* jarg1, double jarg2)
     layer->SetEndTimeCode(jarg2);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_SdfLayerHandle_SetStartTimeCode(void* jarg1, double jarg2)
 {
     
@@ -1726,7 +1731,7 @@ void __cdecl CSharp_pxr_SdfLayerHandle_SetStartTimeCode(void* jarg1, double jarg
     layer->SetStartTimeCode(jarg2);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_SdfPathVector_Add(void* jarg1, void* jarg2)
 {
     auto* vec  = static_cast<std::vector<pxr::SdfPath>*>(jarg1);
@@ -1737,7 +1742,7 @@ void __cdecl CSharp_pxr_SdfPathVector_Add(void* jarg1, void* jarg2)
 
     vec->push_back(*path);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_StdStringVector_Add(void* jarg1, char* jarg2)
 {
     auto* vec = static_cast<std::vector<std::string>*>(jarg1);
@@ -1747,7 +1752,7 @@ void __cdecl CSharp_pxr_StdStringVector_Add(void* jarg1, char* jarg2)
     vec->push_back(std::string(jarg2));
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_SdfAssetPath__SWIG_1(char* jarg1)
 {
     if (!jarg1)
@@ -1757,7 +1762,7 @@ void* __cdecl CSharp_pxr_new_SdfAssetPath__SWIG_1(char* jarg1)
     return new pxr::SdfAssetPath(path);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_SdfPath__SWIG_1(char* jarg1)
 {
     
@@ -1769,12 +1774,12 @@ void* __cdecl CSharp_pxr_new_SdfPath__SWIG_1(char* jarg1)
     auto* path = new pxr::SdfPath(pathStr);
     return static_cast<void*>(path);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_SdfPathVector__SWIG_0()
 {
     return new std::vector<pxr::SdfPath>();
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_StdStringVector__SWIG_2(int jarg1)
 {
     if (jarg1 < 0)
@@ -1786,7 +1791,7 @@ void* __cdecl CSharp_pxr_new_StdStringVector__SWIG_2(int jarg1)
     return static_cast<void*>(vec);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 char* __cdecl CSharp_pxr_SdfLayerHandle_GetIdentifier(void* jarg1)
 {
     if (!jarg1)
@@ -1809,7 +1814,7 @@ char* __cdecl CSharp_pxr_SdfLayerHandle_GetIdentifier(void* jarg1)
     return cb(id.c_str());
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_SdfPath_AppendProperty(void* jarg1, void* jarg2)
 {
     auto* path  = static_cast<const pxr::SdfPath*>(jarg1);
@@ -1821,7 +1826,7 @@ void* __cdecl CSharp_pxr_SdfPath_AppendProperty(void* jarg1, void* jarg2)
     pxr::SdfPath result = path->AppendProperty(*token);
     return new pxr::SdfPath(result);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 char* __cdecl CSharp_pxr_SdfPath_GetText(void* jarg1)
 {
     
@@ -1842,7 +1847,7 @@ char* __cdecl CSharp_pxr_SdfPath_GetText(void* jarg1)
 
     return cb(text);
 }
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 unsigned int __cdecl CSharp_pxr_SdfPath_IsRootPrimPath(void* jarg1)
 {
     
@@ -1884,7 +1889,7 @@ bool SetFusedDisplayColor(UsdPrim prim, VtVec4fArray values, UsdTimeCode time) {
   return rgbPv.Set(rgb, time) && alphaPv.Set(alpha, time);
 }
 
-extern "C" __declspec(dllexport)
+extern "C" USDCS_EXPORT
 unsigned int __cdecl CSharp_pxr_SetFusedDisplayColor(void* jarg1, void* jarg2, void* jarg3)
 {
     auto* prim  = static_cast<pxr::UsdPrim*>(jarg1);
