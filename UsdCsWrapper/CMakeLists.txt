@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.20)
 project(UsdCsWrapper LANGUAGES CXX)
 
+# USD root
 set(USD_ROOT "" CACHE PATH "Path to USD build root")
 
 set(CMAKE_CXX_STANDARD 17)
@@ -9,13 +10,35 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include_directories("${USD_ROOT}/include")
 link_directories("${USD_ROOT}/lib")
 
-add_library(UsdCs SHARED
-    src/UsdCsWrapper.cpp
-)
+# ------------------------------------------------------------------
+# 1. STATIC on XROS / iOS, SHARED everywhere else
+# ------------------------------------------------------------------
 
-target_link_libraries(UsdCs
-    usd_ms
-)
+if (CMAKE_SYSTEM_NAME STREQUAL "XROS" OR CMAKE_OSX_SYSROOT MATCHES "xros")
+    message(STATUS "Building STATIC UsdCs for visionOS/XROS")
+    add_library(UsdCs STATIC src/UsdCsWrapper.cpp)
+else()
+    message(STATUS "Building SHARED UsdCs for desktop")
+    add_library(UsdCs SHARED src/UsdCsWrapper.cpp)
+endif()
+
+# ------------------------------------------------------------------
+# 2. Correct monolithic USD lib: usd_ms (desktop), usd_m (XROS)
+# ------------------------------------------------------------------
+
+if (CMAKE_SYSTEM_NAME STREQUAL "XROS" OR CMAKE_OSX_SYSROOT MATCHES "xros")
+    message(STATUS "Linking against monolithic static usd_m for visionOS/XROS")
+    set(USD_MONOLITHIC_LIB usd_m)
+else()
+    message(STATUS "Linking against monolithic shared usd_ms for desktop")
+    set(USD_MONOLITHIC_LIB usd_ms)
+endif()
+
+target_link_libraries(UsdCs PRIVATE ${USD_MONOLITHIC_LIB})
+
+# ------------------------------------------------------------------
+# 3. Naming / compiler flags
+# ------------------------------------------------------------------
 
 set_target_properties(UsdCs PROPERTIES
     OUTPUT_NAME "UsdCs"
