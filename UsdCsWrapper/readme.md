@@ -1,14 +1,19 @@
 ## Build USD
 ```bash
+win
 python build_scripts/build_usd.py ./build_win64 --no-python --no-tests --no-examples --no-tutorials --build-monolithic
 ```
 
 ## Build Wrapper
 ```bash
+win
 python build.py D:/ElasticSea/OpenUSD/build_win64
+visionos
+python3 build.py /Users/elasticsea/Repo/OpenUSD/build_xros visionOS --no-python --no-tests --no-examples --no-tutorials --build-monolithic --verbose
 ```
 
 ```bash
 copy /Y "D:\ElasticSea\usdz-xros-unity-bridge\UsdCsWrapper\build\RelWithDebInfo\UsdCs.dll" "D:\ElasticSea\blockworks\Packages\com.unity.usd.core@a7855ade4aa6\Runtime\Plugins\x86_64\Windows\lib\UsdCs.dll"
 ```
 
+s
