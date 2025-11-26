@@ -3,23 +3,43 @@
 #include "pxr/usd/sdf/types.h"
 #include "pxr/base/tf/token.h"
 #include "pxr/usd/usdUtils/sparseValueWriter.h"
+#include "pxr/usd/usd/typed.h"
+#include "pxr/usd/usdGeom/primvar.h"
+#include "pxr/usd/usdShade/materialBindingAPI.h"
+#include "pxr/usd/usdUtils/usdzPackage.h"
+#include "pxr/usd/usdGeom/primvarsAPI.h"
+
+
 using namespace pxr;
 
 
-#pragma region Debug Log
-static FILE* g_
-static void 
-{
-    if (!g_
-        g_
+//#pragma region Debug Log
+//static FILE* g_
+//static void 
+//{
+//    if (!g_
+//        g_
+//
+//    if (g_
+//    {
+//        fprintf(g_
+//        fflush(g_
+//    }
+//}
+//#pragma endregion
 
-    if (g_
+namespace pxr
+{
+    static TfToken VtValueToTfToken(const VtValue& v)
     {
-        fprintf(g_
-        fflush(g_
+        return v.Get<TfToken>();
+    }
+
+    static VtVec4fArray VtValueToVtVec4fArray(const VtValue& v)
+    {
+        return v.Get<VtVec4fArray>();
     }
 }
-#pragma endregion
 
 // // Swig callbacks not really usd
 // ==============================
@@ -400,9 +420,11 @@ void* __cdecl CSharp_pxr_new_GfVec4f__SWIG_2(float jarg1, float jarg2, float jar
 // // Values
 // Usd core types
 extern "C" __declspec(dllexport)
-void __cdecl CSharp_pxr_delete_UsdStage(void* p0)
+void __cdecl CSharp_pxr_delete_UsdStage(void* jarg1)
 {
-    delete static_cast<pxr::UsdStage*>(p0);
+    using StageHandle = pxr::TfRefPtr<pxr::UsdStage>;
+    StageHandle* handle = static_cast<StageHandle*>(jarg1);
+    delete handle; // this decrefs the underlying UsdStage correctly
 }
 
 extern "C" __declspec(dllexport)
@@ -739,6 +761,13 @@ void* __cdecl CSharp_pxr_new_VtValue__SWIG_41(void* p0)
     if (!arr) return nullptr;
     return new pxr::VtValue(*arr);
 }
+
+extern "C" __declspec(dllexport)
+void* __cdecl CSharp_pxr_new_VtValue__SWIG_4(double p0)
+{
+    return new pxr::VtValue(p0);
+}
+
 extern "C" __declspec(dllexport)
 void* __cdecl CSharp_pxr_new_VtValue__SWIG_10(bool p0)
 {
@@ -963,7 +992,7 @@ void* __cdecl CSharp_pxr_UsdStage_DefinePrim__SWIG_0(void* jarg1, void* jarg2, v
     if (!smartStage)
         return nullptr;
 
-    pxr::UsdStage* stage = smartStage->get();
+    pxr::UsdStage* stage = smartStage->operator->();
     if (!stage)
         return nullptr;
 
@@ -991,7 +1020,7 @@ void* __cdecl CSharp_pxr_UsdStage_GetEditTarget(void* jarg1)
         static_cast<pxr::TfRefPtr<const pxr::UsdStage>*>(jarg1);
 
     const pxr::UsdStage* stage =
-        smartStage ? smartStage->get() : nullptr;
+        smartStage ? smartStage->operator->() : nullptr;
 
     if (!stage)
         return nullptr;
@@ -1009,7 +1038,7 @@ unsigned int __cdecl CSharp_pxr_UsdStage_GetMetadata(void* jarg1, void* jarg2, v
         static_cast<pxr::TfRefPtr<const pxr::UsdStage>*>(jarg1);
 
     const pxr::UsdStage* stage =
-        smartStage ? smartStage->get() : nullptr;
+        smartStage ? smartStage->operator->() : nullptr;
 
     if (!stage)
         return 0;
@@ -1039,7 +1068,7 @@ void* __cdecl CSharp_pxr_UsdStage_GetPrimAtPath(void* jarg1, void* jarg2)
     auto* smartStage =
         static_cast<pxr::TfRefPtr<const pxr::UsdStage>*>(jarg1);
     const pxr::UsdStage* stage =
-        smartStage ? smartStage->get() : nullptr;
+        smartStage ? smartStage->operator->() : nullptr;
     if (!stage)
         return nullptr;
 
@@ -1061,7 +1090,7 @@ unsigned int __cdecl CSharp_pxr_UsdStage_SetMetadata(void* jarg1, void* jarg2, v
 
     // jarg1 is a TfRefPtr<const UsdStage>
     auto* smartStage = static_cast<pxr::TfRefPtr<const pxr::UsdStage>*>(jarg1);
-    const pxr::UsdStage* stage = smartStage ? smartStage->get() : nullptr;
+    const pxr::UsdStage* stage = smartStage ? smartStage->operator->() : nullptr;
     if (!stage)
         return 0;
 
@@ -1079,7 +1108,7 @@ void __cdecl CSharp_pxr_UsdStage_Save(void* jarg1)
 {
     // jarg1 is TfRefPtr<UsdStage>
     auto* smart = static_cast<pxr::TfRefPtr<pxr::UsdStage>*>(jarg1);
-    pxr::UsdStage* stage = smart ? smart->get() : nullptr;
+    pxr::UsdStage* stage = smart ? smart->operator->() : nullptr;
 
     if (!stage)
         return;
@@ -1091,7 +1120,7 @@ void __cdecl CSharp_pxr_UsdStage_SetDefaultPrim(void* jarg1, void* jarg2)
 {
     // jarg1 is a TfRefPtr<UsdStage>
     auto* smartStage = static_cast<pxr::TfRefPtr<pxr::UsdStage>*>(jarg1);
-    pxr::UsdStage* stage = smartStage ? smartStage->get() : nullptr;
+    pxr::UsdStage* stage = smartStage ? smartStage->operator->() : nullptr;
 
     auto* prim = static_cast<pxr::UsdPrim*>(jarg2);
 
@@ -1470,7 +1499,6 @@ void* __cdecl CSharp_pxr_UsdGeomPrimvarsAPI_CreatePrimvar__SWIG_1(
 extern "C" __declspec(dllexport)
 pxr::UsdAPISchemaBase* __cdecl CSharp_pxr_UsdGeomPrimvarsAPI_SWIGUpcast(pxr::UsdGeomPrimvarsAPI* jarg1)
 {
-    dbg("UsdGeomPrimvarsAPI_SWIGUpcast");
     return static_cast<pxr::UsdAPISchemaBase*>(jarg1);
 }
 extern "C" __declspec(dllexport)
@@ -1677,7 +1705,7 @@ void __cdecl CSharp_pxr_SdfLayerHandle_SetEndTimeCode(void* jarg1, double jarg2)
 
     auto* handle = static_cast<pxr::SdfLayerHandle*>(jarg1);
 
-    pxr::SdfLayer* layer = handle->get();
+    pxr::SdfLayer* layer = handle->operator->();
     if (!layer)
         return;
 
@@ -1696,7 +1724,7 @@ void __cdecl CSharp_pxr_SdfLayerHandle_SetStartTimeCode(void* jarg1, double jarg
 
     // Same semantics as SWIG:
     // (*handle) == underlying SdfLayer*
-    pxr::SdfLayer* layer = handle->get();
+    pxr::SdfLayer* layer = handle->operator->();
 
     if (!layer)
         return;
@@ -1771,7 +1799,7 @@ char* __cdecl CSharp_pxr_SdfLayerHandle_GetIdentifier(void* jarg1)
         return nullptr;
 
     auto* handle = static_cast<pxr::SdfLayerHandle*>(jarg1);
-    pxr::SdfLayer* layer = handle->get();
+    pxr::SdfLayer* layer = handle->operator->();
     if (!layer)
         return nullptr;
 
@@ -1837,19 +1865,6 @@ unsigned int __cdecl CSharp_pxr_SdfPath_IsRootPrimPath(void* jarg1)
 // // unity/usdnet helpers
 
 
-extern "C" __declspec(dllexport)
-unsigned int __cdecl CSharp_pxr_SetFusedDisplayColor(void* jarg1, void* jarg2, void* jarg3)
-{
-    auto* prim  = static_cast<pxr::UsdPrim*>(jarg1);
-    auto* vals  = static_cast<pxr::VtVec4fArray*>(jarg2);
-    auto* time  = static_cast<pxr::UsdTimeCode*>(jarg3);
-
-    if (!prim || !vals || !time)
-        return 0;
-
-    bool ok = pxr::SetFusedDisplayColor(*prim, *vals, *time);
-    return ok ? 1u : 0u;
-}
 
 bool SetFusedDisplayColor(UsdPrim prim, VtVec4fArray values, UsdTimeCode time) {
   if (!prim) { return false; }
@@ -1873,4 +1888,18 @@ bool SetFusedDisplayColor(UsdPrim prim, VtVec4fArray values, UsdTimeCode time) {
   }
 
   return rgbPv.Set(rgb, time) && alphaPv.Set(alpha, time);
+}
+
+extern "C" __declspec(dllexport)
+unsigned int __cdecl CSharp_pxr_SetFusedDisplayColor(void* jarg1, void* jarg2, void* jarg3)
+{
+    auto* prim  = static_cast<pxr::UsdPrim*>(jarg1);
+    auto* vals  = static_cast<pxr::VtVec4fArray*>(jarg2);
+    auto* time  = static_cast<pxr::UsdTimeCode*>(jarg3);
+
+    if (!prim || !vals || !time)
+        return 0;
+
+    bool ok = SetFusedDisplayColor(*prim, *vals, *time);
+    return ok ? 1u : 0u;
 }
