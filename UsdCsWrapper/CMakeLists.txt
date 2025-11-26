@@ -14,7 +14,7 @@ add_library(UsdCs SHARED
 )
 
 target_link_libraries(UsdCs
-    usd_sdf
+    usd_ms
 )
 
 set_target_properties(UsdCs PROPERTIES
