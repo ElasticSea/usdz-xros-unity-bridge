@@ -396,10 +396,6 @@ void* __cdecl CSharp_pxr_new_GfVec4f__SWIG_2(float jarg1, float jarg2, float jar
 {
     return new pxr::GfVec4f(jarg1, jarg2, jarg3, jarg4);
 }
-// WRAP_VOID(CSharp_pxr_delete_GfMatrix4d, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_VOID(CSharp_pxr_delete_GfVec2f, __CSharp_pxr_UsdPrim_SetTypeNameCSharp_pxr_UsdPrim_SetTypeNamecdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_VOID(CSharp_pxr_delete_GfVec3f, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_VOID(CSharp_pxr_delete_GfVec4f, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
 
 // // Values
 // Usd core types
@@ -821,7 +817,6 @@ void* __cdecl CSharp_pxr_new_VtVec4fArray__SWIG_3(unsigned long jarg1)
     return arr;
 }
 
-// WRAP_POINTER(CSharp_pxr_VtIntArray_SWIGUpcast, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
 extern "C" __declspec(dllexport)
 void* __cdecl CSharp_pxr_VtValueToTfToken__SWIG_0(void* jarg1)
 {
@@ -846,9 +841,6 @@ void* __cdecl CSharp_pxr_VtValueToVtVec4fArray__SWIG_0(void* jarg1)
 }
 
 
-// WRAP_POINTER(CSharp_pxr_VtVec2fArray_SWIGUpcast, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_POINTER(CSharp_pxr_VtVec3fArray_SWIGUpcast, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_POINTER(CSharp_pxr_VtVec4fArray_SWIGUpcast, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
 extern "C" __declspec(dllexport)
 void __cdecl CSharp_pxr_VtIntArray_CopyFromArray__SWIG_1(void* jarg1, void* jarg2)
 {
@@ -946,7 +938,6 @@ void __cdecl CSharp_pxr_VtVec4fArray_CopyFromArray__SWIG_1(void* jarg1, void* ja
 
 
 // // usd stage
-// WRAP_VOID(CSharp_pxr_delete_UsdStage, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
 extern "C" __declspec(dllexport)
 void* __cdecl CSharp_pxr_UsdStage_CreateNew__SWIG_1(char* jarg1)
 {
@@ -1083,8 +1074,33 @@ unsigned int __cdecl CSharp_pxr_UsdStage_SetMetadata(void* jarg1, void* jarg2, v
     return ok ? 1u : 0u;
 }
 
-// WRAP_VOID(CSharp_pxr_UsdStage_Save, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_VOID(CSharp_pxr_UsdStage_SetDefaultPrim, __cdecl, (void* p0, void* p1), (p0, p1), LOG_ARGS_PTR2(p0, p1));
+extern "C" __declspec(dllexport)
+void __cdecl CSharp_pxr_UsdStage_Save(void* jarg1)
+{
+    // jarg1 is TfRefPtr<UsdStage>
+    auto* smart = static_cast<pxr::TfRefPtr<pxr::UsdStage>*>(jarg1);
+    pxr::UsdStage* stage = smart ? smart->get() : nullptr;
+
+    if (!stage)
+        return;
+
+    stage->Save();
+}
+extern "C" __declspec(dllexport)
+void __cdecl CSharp_pxr_UsdStage_SetDefaultPrim(void* jarg1, void* jarg2)
+{
+    // jarg1 is a TfRefPtr<UsdStage>
+    auto* smartStage = static_cast<pxr::TfRefPtr<pxr::UsdStage>*>(jarg1);
+    pxr::UsdStage* stage = smartStage ? smartStage->get() : nullptr;
+
+    auto* prim = static_cast<pxr::UsdPrim*>(jarg2);
+
+    if (!stage || !prim)
+        return;
+
+    stage->SetDefaultPrim(*prim);
+}
+
 
 // // usd - object
 extern "C" __declspec(dllexport)
@@ -1113,7 +1129,6 @@ unsigned int __cdecl CSharp_pxr_UsdAttribute_SetConnections(void* jarg1, void* j
     return ok ? 1u : 0u;
 }
 // // usd - time/edit target
-// WRAP_VOID(CSharp_pxr_delete_UsdTimeCode, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
 extern "C" __declspec(dllexport)
 void* __cdecl CSharp_pxr_new_UsdTimeCode__SWIG_0(double jarg1)
 {
@@ -1145,7 +1160,6 @@ void* __cdecl CSharp_pxr_UsdEditTarget_GetLayer(void* jarg1)
     const pxr::SdfLayerHandle& layer = editTarget->GetLayer();
     return const_cast<pxr::SdfLayerHandle*>(&layer);
 }
-// WRAP_POINTER(CSharp_pxr_UsdPrim_SWIGUpcast, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
 
 // // usd - prim
 extern "C" __declspec(dllexport)
@@ -1199,7 +1213,19 @@ void* __cdecl CSharp_pxr_UsdPrim_CreateAttribute__SWIG_4(
 
     return new pxr::UsdAttribute(attr);
 }
-// WRAP_POINTER(CSharp_pxr_UsdPrim_GetAttribute, __cdecl, (void* p0, void* p1), (p0, p1), LOG_ARGS_PTR2(p0, p1));
+extern "C" __declspec(dllexport)
+void* __cdecl CSharp_pxr_UsdPrim_GetAttribute(void* jarg1, void* jarg2)
+{
+    auto* prim  = static_cast<const pxr::UsdPrim*>(jarg1);
+    auto* token = static_cast<const pxr::TfToken*>(jarg2);
+
+    if (!prim || !token)
+        return nullptr;
+
+    pxr::UsdAttribute attr = prim->GetAttribute(*token);
+    return new pxr::UsdAttribute(attr);
+}
+
 extern "C" __declspec(dllexport)
 void* __cdecl CSharp_pxr_UsdPrim_GetTypeName(void* jarg1)
 {
@@ -1229,10 +1255,18 @@ unsigned int __cdecl CSharp_pxr_UsdPrim_SetTypeName(void* jarg1, void* jarg2)
 }
 
 // // usd - deletes
-// WRAP_VOID(CSharp_pxr_delete_UsdPrim, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_VOID(CSharp_pxr_delete_UsdAttribute, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
 // // usd - object/property
-// WRAP_BOOL(CSharp_pxr_UsdObject__IsValid, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
+extern "C" __declspec(dllexport)
+unsigned int __cdecl CSharp_pxr_UsdObject__IsValid(void* jarg1)
+{
+    auto* obj = static_cast<pxr::UsdObject*>(jarg1);
+    if (!obj)
+        return 0;
+
+    bool ok = obj->IsValid();
+    return ok ? 1u : 0u;
+}
+
 extern "C" __declspec(dllexport)
 unsigned int __cdecl CSharp_pxr_UsdObject_IsValid(void* jarg1)
 {
@@ -1244,19 +1278,111 @@ unsigned int __cdecl CSharp_pxr_UsdObject_IsValid(void* jarg1)
     bool valid = obj->IsValid();
     return valid ? 1u : 0u;
 }
-// WRAP_POINTER(CSharp_pxr_UsdProperty_SWIGUpcast, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// // usd - schemabase/type
-// WRAP_POINTER(CSharp_pxr_UsdSchemaBase_GetPath, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_POINTER(CSharp_pxr_UsdSchemaBase_GetPrim, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_POINTER(CSharp_pxr_UsdTyped_SWIGUpcast, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_POINTER(CSharp_pxr_UsdAPISchemaBase_SWIGUpcast, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
+
+extern "C" __declspec(dllexport)
+void* __cdecl CSharp_pxr_UsdSchemaBase_GetPath(void* jarg1)
+{
+    auto* schema = static_cast<const pxr::UsdSchemaBase*>(jarg1);
+    if (!schema)
+        return nullptr;
+
+    pxr::SdfPath path = schema->GetPath();
+    return new pxr::SdfPath(path);
+}
+
+extern "C" __declspec(dllexport)
+void* __cdecl CSharp_pxr_new_UsdGeomMesh__SWIG_0(void* jarg1)
+{
+    auto* prim = static_cast<const pxr::UsdPrim*>(jarg1);
+    if (!prim)
+        return nullptr;
+
+    return new pxr::UsdGeomMesh(*prim);
+}
+extern "C" __declspec(dllexport)
+void* __cdecl CSharp_pxr_UsdGeomBoundable_SWIGUpcast(void* jarg1)
+{
+    return (pxr::UsdGeomXformable*) jarg1;
+}
+
+extern "C" __declspec(dllexport)
+void* __cdecl CSharp_pxr_UsdGeomGprim_SWIGUpcast(void* jarg1)
+{
+    return (pxr::UsdGeomBoundable*) jarg1;
+}
+
+extern "C" __declspec(dllexport)
+void* __cdecl CSharp_pxr_UsdGeomMesh_SWIGUpcast(void* jarg1)
+{
+    return (pxr::UsdGeomPointBased*) jarg1;
+}
+
+extern "C" __declspec(dllexport)
+void* __cdecl CSharp_pxr_UsdGeomXformable_SWIGUpcast(void* jarg1)
+{
+    return (pxr::UsdGeomImageable*) jarg1;
+}
+extern "C" __declspec(dllexport)
+void* __cdecl CSharp_pxr_UsdGeomSubset_SWIGUpcast(void* jarg1)
+{
+    return (pxr::UsdTyped*) jarg1;
+}
+
+extern "C" __declspec(dllexport)
+void* __cdecl CSharp_pxr_UsdGeomSubset_CreateUniqueGeomSubset__SWIG_1(
+    void* jarg1,
+    void* jarg2,
+    void* jarg3,
+    void* jarg4,
+    void* jarg5)
+{
+    auto* imageable  = static_cast<const pxr::UsdGeomImageable*>(jarg1);
+    auto* name       = static_cast<const pxr::TfToken*>(jarg2);
+    auto* elementType= static_cast<const pxr::TfToken*>(jarg3);
+    auto* indices    = static_cast<const pxr::VtArray<int>*>(jarg4);  // VtIntArray
+    auto* familyName = static_cast<const pxr::TfToken*>(jarg5);
+
+    if (!imageable || !name || !elementType || !indices || !familyName)
+        return nullptr;
+
+    pxr::UsdGeomSubset subset =
+        pxr::UsdGeomSubset::CreateUniqueGeomSubset(
+            *imageable,
+            *name,
+            *elementType,
+            *indices,
+            *familyName);
+
+    return new pxr::UsdGeomSubset(subset);
+}
+extern "C" __declspec(dllexport)
+pxr::UsdGeomGprim* __cdecl CSharp_pxr_UsdGeomPointBased_SWIGUpcast(
+    pxr::UsdGeomPointBased* jarg1)
+{
+    return static_cast<pxr::UsdGeomGprim*>(jarg1);
+}
+
+extern "C" __declspec(dllexport)
+void* __cdecl CSharp_pxr_UsdSchemaBase_GetPrim(void* jarg1)
+{
+    auto* schema = static_cast<const pxr::UsdSchemaBase*>(jarg1);
+    if (!schema)
+        return nullptr;
+
+    pxr::UsdPrim prim = schema->GetPrim();
+    return new pxr::UsdPrim(prim);
+}
+extern "C" __declspec(dllexport)
+void* __cdecl CSharp_pxr_new_UsdGeomPrimvar__SWIG_2(void* p0)
+{
+    auto* src = static_cast<pxr::UsdGeomPrimvar*>(p0);
+    if (!src)
+        return nullptr;
+
+    return new pxr::UsdGeomPrimvar(*src);
+}
 
 // // Geom
-// WRAP_VOID(CSharp_pxr_delete_UsdGeomImageable, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_VOID(CSharp_pxr_delete_UsdGeomMesh, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_VOID(CSharp_pxr_delete_UsdGeomPrimvar, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_VOID(CSharp_pxr_delete_UsdGeomPrimvarsAPI, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_VOID(CSharp_pxr_delete_UsdGeomSubset, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
 extern "C" __declspec(dllexport)
 void* __cdecl CSharp_pxr_new_UsdGeomImageable__SWIG_0(void* jarg1)
 {
@@ -1270,8 +1396,6 @@ void* __cdecl CSharp_pxr_new_UsdGeomImageable__SWIG_0(void* jarg1)
 
     return img;
 }
-// WRAP_POINTER(CSharp_pxr_new_UsdGeomMesh__SWIG_0, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_POINTER(CSharp_pxr_new_UsdGeomPrimvar__SWIG_2, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
 extern "C" __declspec(dllexport)
 void* __cdecl CSharp_pxr_new_UsdGeomPrimvarsAPI__SWIG_2(void* p0)
 {
@@ -1281,13 +1405,6 @@ void* __cdecl CSharp_pxr_new_UsdGeomPrimvarsAPI__SWIG_2(void* p0)
 
     return new pxr::UsdGeomPrimvarsAPI(*base);
 }
-
-
-// WRAP_POINTER(CSharp_pxr_UsdGeomBoundable_SWIGUpcast, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_POINTER(CSharp_pxr_UsdGeomGprim_SWIGUpcast, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_POINTER(CSharp_pxr_UsdGeomImageable_SWIGUpcast, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_POINTER(CSharp_pxr_UsdGeomMesh_SWIGUpcast, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_POINTER(CSharp_pxr_UsdGeomPointBased_SWIGUpcast, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
 
 extern "C" __declspec(dllexport)
 void* __cdecl CSharp_pxr_UsdGeomPrimvar_GetAttr(void* jarg1)
@@ -1356,21 +1473,72 @@ pxr::UsdAPISchemaBase* __cdecl CSharp_pxr_UsdGeomPrimvarsAPI_SWIGUpcast(pxr::Usd
     dbg("UsdGeomPrimvarsAPI_SWIGUpcast");
     return static_cast<pxr::UsdAPISchemaBase*>(jarg1);
 }
+extern "C" __declspec(dllexport)
+void* __cdecl CSharp_pxr_new_UsdShadeMaterial__SWIG_0(void* jarg1)
+{
+    auto* prim = static_cast<const pxr::UsdPrim*>(jarg1);
+    if (!prim)
+        return nullptr;
 
-// WRAP_POINTER(CSharp_pxr_UsdGeomSubset_CreateUniqueGeomSubset__SWIG_1, __cdecl, (void* p0, void* p1, void* p2, void* p3, void* p4), (p0, p1, p2, p3, p4), LOG_ARGS_PTR5(p0, p1, p2, p3, p4));
-// WRAP_POINTER(CSharp_pxr_UsdGeomSubset_SWIGUpcast, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_POINTER(CSharp_pxr_UsdGeomXformable_SWIGUpcast, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
+    return new pxr::UsdShadeMaterial(*prim);
+}
 
-// // shade
-// WRAP_VOID(CSharp_pxr_delete_UsdShadeMaterial, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_VOID(CSharp_pxr_delete_UsdShadeMaterialBindingAPI, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_POINTER(CSharp_pxr_new_UsdShadeMaterial__SWIG_0, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_POINTER(CSharp_pxr_new_UsdShadeMaterialBindingAPI__SWIG_0, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_POINTER(CSharp_pxr_UsdShadeMaterial_SWIGUpcast, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_POINTER(CSharp_pxr_UsdShadeMaterialBindingAPI_Apply, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_BOOL(CSharp_pxr_UsdShadeMaterialBindingAPI_Bind__SWIG_2, __cdecl, (void* p0, void* p1), (p0, p1), LOG_ARGS_PTR2(p0, p1));
-// WRAP_POINTER(CSharp_pxr_UsdShadeMaterialBindingAPI_SWIGUpcast, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_POINTER(CSharp_pxr_UsdShadeNodeGraph_SWIGUpcast, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
+extern "C" __declspec(dllexport)
+void* __cdecl CSharp_pxr_new_UsdShadeMaterialBindingAPI__SWIG_0(void* jarg1)
+{
+    auto* prim = static_cast<const pxr::UsdPrim*>(jarg1);
+    if (!prim)
+        return nullptr;
+
+    return new pxr::UsdShadeMaterialBindingAPI(*prim);
+}
+
+extern "C" __declspec(dllexport)
+void* __cdecl CSharp_pxr_UsdShadeMaterial_SWIGUpcast(void* jarg1)
+{
+    return (pxr::UsdShadeNodeGraph*) jarg1;
+}
+
+extern "C" __declspec(dllexport)
+void* __cdecl CSharp_pxr_UsdShadeMaterialBindingAPI_Apply(void* jarg1)
+{
+    auto* prim = static_cast<const pxr::UsdPrim*>(jarg1);
+    if (!prim)
+        return nullptr;
+
+    pxr::UsdShadeMaterialBindingAPI api =
+        pxr::UsdShadeMaterialBindingAPI::Apply(*prim);
+
+    return new pxr::UsdShadeMaterialBindingAPI(api);
+}
+
+extern "C" __declspec(dllexport)
+unsigned int __cdecl CSharp_pxr_UsdShadeMaterialBindingAPI_Bind__SWIG_2(
+    void* jarg1,
+    void* jarg2)
+{
+    auto* api      = static_cast<const pxr::UsdShadeMaterialBindingAPI*>(jarg1);
+    auto* material = static_cast<const pxr::UsdShadeMaterial*>(jarg2);
+
+    if (!api || !material)
+        return 0;
+
+    bool ok = api->Bind(*material);
+    return ok ? 1u : 0u;
+}
+
+extern "C" __declspec(dllexport)
+void* __cdecl CSharp_pxr_UsdShadeMaterialBindingAPI_SWIGUpcast(void* jarg1)
+{
+    return (pxr::UsdAPISchemaBase*)jarg1;
+}
+
+extern "C" __declspec(dllexport)
+void* __cdecl CSharp_pxr_UsdShadeNodeGraph_SWIGUpcast(void* jarg1)
+{
+    return (pxr::UsdTyped*) jarg1;
+}
+
 
 
 // // utils
@@ -1379,8 +1547,22 @@ void* __cdecl CSharp_pxr_new_UsdUtilsSparseValueWriter()
 {
     return new UsdUtilsSparseValueWriter();
 }
-// WRAP_VOID(CSharp_pxr_delete_UsdUtilsSparseValueWriter, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_BOOL(CSharp_pxr_UsdUtilsCreateNewARKitUsdzPackage__SWIG_1, __cdecl, (void* p0, const char* p1), (p0, p1), LOG_ARGS_PTR1_STR1(p0, p1));
+extern "C" __declspec(dllexport)
+unsigned int __cdecl CSharp_pxr_UsdUtilsCreateNewARKitUsdzPackage__SWIG_1(
+    void* jarg1,
+    char* jarg2)
+{
+    auto* path = static_cast<const pxr::SdfAssetPath*>(jarg1);
+    if (!path || !jarg2)
+        return 0;
+
+    // SWIG converts jarg2 → temporary std::string(arg2_str)
+    std::string dest(jarg2);
+
+    bool ok = pxr::UsdUtilsCreateNewARKitUsdzPackage(*path, dest);
+    return ok ? 1u : 0u;
+}
+
 extern "C" __declspec(dllexport)
 unsigned int __cdecl CSharp_pxr_UsdUtilsSparseValueWriter_SetAttribute__SWIG_0(
     void* jarg1,
@@ -1423,7 +1605,6 @@ char* __cdecl CSharp_pxr_TfMakeValidIdentifier(char* jarg1)
 
     return cb(result.c_str());
 }
-// WRAP_VOID(CSharp_pxr_delete_TfToken, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
 extern "C" __declspec(dllexport)
 void* __cdecl CSharp_pxr_SdfValueTypeName_GetAsToken(void* jarg1)
 {
@@ -1468,7 +1649,6 @@ void __cdecl CSharp_pxr_TfDiagnosticMgr_Delegate_director_connect(
     // stub – we ignore diagnostic delegate wiring for now
     (void)p0; (void)p1; (void)p2; (void)p3; (void)p4;
 }
-// WRAP_VOID(CSharp_pxr_delete_TfDiagnosticMgr_Delegate, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
 extern "C" __declspec(dllexport)
 void* __cdecl CSharp_pxr_new_TfDiagnosticMgr_Delegate()
 {
@@ -1487,11 +1667,6 @@ void* __cdecl CSharp_pxr_TfDiagnosticMgr_GetInstance()
 }
 
 // // sdf
-// WRAP_VOID(CSharp_pxr_delete_SdfAssetPath, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_VOID(CSharp_pxr_delete_SdfPath, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_VOID(CSharp_pxr_delete_SdfPathVector, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_VOID(CSharp_pxr_delete_SdfValueTypeName, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
-// WRAP_VOID(CSharp_pxr_delete_StdStringVector, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
 extern "C" __declspec(dllexport)
 void __cdecl CSharp_pxr_SdfLayerHandle_SetEndTimeCode(void* jarg1, double jarg2)
 {
@@ -1658,7 +1833,6 @@ unsigned int __cdecl CSharp_pxr_SdfPath_IsRootPrimPath(void* jarg1)
     bool r = path->IsRootPrimPath();
     return r ? 1u : 0u;
 }
-// WRAP_POINTER(CSharp_pxr_UsdAttribute_SWIGUpcast, __cdecl, (void* p0), (p0), LOG_ARGS_PTR1(p0));
 
 // // unity/usdnet helpers
 
