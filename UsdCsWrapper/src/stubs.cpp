@@ -1,3 +1,5 @@
+#include <cstdint>
+
 #if defined(_WIN32)
 #   define USDCS_EXPORT __declspec(dllexport)
 #else
@@ -55670,12 +55672,12 @@ char* __cdecl CSharp_pxr_VtVec4iArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtVec4iArray_CopyToArray__SWIG_0(void* jarg1, GfVec4i jarg2)
+void __cdecl CSharp_pxr_VtVec4iArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtVec4iArray_CopyFromArray__SWIG_0(void* jarg1, GfVec4i jarg2)
+void __cdecl CSharp_pxr_VtVec4iArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -55820,12 +55822,12 @@ char* __cdecl CSharp_pxr_VtVec3iArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtVec3iArray_CopyToArray__SWIG_0(void* jarg1, GfVec3i jarg2)
+void __cdecl CSharp_pxr_VtVec3iArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtVec3iArray_CopyFromArray__SWIG_0(void* jarg1, GfVec3i jarg2)
+void __cdecl CSharp_pxr_VtVec3iArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -55970,12 +55972,12 @@ char* __cdecl CSharp_pxr_VtVec2iArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtVec2iArray_CopyToArray__SWIG_0(void* jarg1, GfVec2i jarg2)
+void __cdecl CSharp_pxr_VtVec2iArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtVec2iArray_CopyFromArray__SWIG_0(void* jarg1, GfVec2i jarg2)
+void __cdecl CSharp_pxr_VtVec2iArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -56120,12 +56122,12 @@ char* __cdecl CSharp_pxr_VtVec4hArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtVec4hArray_CopyToArray__SWIG_0(void* jarg1, GfVec4h jarg2)
+void __cdecl CSharp_pxr_VtVec4hArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtVec4hArray_CopyFromArray__SWIG_0(void* jarg1, GfVec4h jarg2)
+void __cdecl CSharp_pxr_VtVec4hArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -56270,12 +56272,12 @@ char* __cdecl CSharp_pxr_VtVec3hArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtVec3hArray_CopyToArray__SWIG_0(void* jarg1, GfVec3h jarg2)
+void __cdecl CSharp_pxr_VtVec3hArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtVec3hArray_CopyFromArray__SWIG_0(void* jarg1, GfVec3h jarg2)
+void __cdecl CSharp_pxr_VtVec3hArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -56420,12 +56422,12 @@ char* __cdecl CSharp_pxr_VtVec2hArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtVec2hArray_CopyToArray__SWIG_0(void* jarg1, GfVec2h jarg2)
+void __cdecl CSharp_pxr_VtVec2hArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtVec2hArray_CopyFromArray__SWIG_0(void* jarg1, GfVec2h jarg2)
+void __cdecl CSharp_pxr_VtVec2hArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -56560,12 +56562,12 @@ char* __cdecl CSharp_pxr_VtVec4fArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtVec4fArray_CopyToArray__SWIG_0(void* jarg1, GfVec4f jarg2)
+void __cdecl CSharp_pxr_VtVec4fArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtVec4fArray_CopyFromArray__SWIG_0(void* jarg1, GfVec4f jarg2)
+void __cdecl CSharp_pxr_VtVec4fArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -56690,12 +56692,12 @@ char* __cdecl CSharp_pxr_VtVec3fArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtVec3fArray_CopyToArray__SWIG_0(void* jarg1, GfVec3f jarg2)
+void __cdecl CSharp_pxr_VtVec3fArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtVec3fArray_CopyFromArray__SWIG_0(void* jarg1, GfVec3f jarg2)
+void __cdecl CSharp_pxr_VtVec3fArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -56820,12 +56822,12 @@ char* __cdecl CSharp_pxr_VtVec2fArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtVec2fArray_CopyToArray__SWIG_0(void* jarg1, GfVec2f jarg2)
+void __cdecl CSharp_pxr_VtVec2fArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtVec2fArray_CopyFromArray__SWIG_0(void* jarg1, GfVec2f jarg2)
+void __cdecl CSharp_pxr_VtVec2fArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -56965,12 +56967,12 @@ char* __cdecl CSharp_pxr_VtVec4dArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtVec4dArray_CopyToArray__SWIG_0(void* jarg1, GfVec4d jarg2)
+void __cdecl CSharp_pxr_VtVec4dArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtVec4dArray_CopyFromArray__SWIG_0(void* jarg1, GfVec4d jarg2)
+void __cdecl CSharp_pxr_VtVec4dArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -57115,12 +57117,12 @@ char* __cdecl CSharp_pxr_VtVec3dArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtVec3dArray_CopyToArray__SWIG_0(void* jarg1, GfVec3d jarg2)
+void __cdecl CSharp_pxr_VtVec3dArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtVec3dArray_CopyFromArray__SWIG_0(void* jarg1, GfVec3d jarg2)
+void __cdecl CSharp_pxr_VtVec3dArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -57265,12 +57267,12 @@ char* __cdecl CSharp_pxr_VtVec2dArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtVec2dArray_CopyToArray__SWIG_0(void* jarg1, GfVec2d jarg2)
+void __cdecl CSharp_pxr_VtVec2dArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtVec2dArray_CopyFromArray__SWIG_0(void* jarg1, GfVec2d jarg2)
+void __cdecl CSharp_pxr_VtVec2dArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -57415,12 +57417,12 @@ char* __cdecl CSharp_pxr_VtMatrix4dArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtMatrix4dArray_CopyToArray__SWIG_0(void* jarg1, GfMatrix4d jarg2)
+void __cdecl CSharp_pxr_VtMatrix4dArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtMatrix4dArray_CopyFromArray__SWIG_0(void* jarg1, GfMatrix4d jarg2)
+void __cdecl CSharp_pxr_VtMatrix4dArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -57565,12 +57567,12 @@ char* __cdecl CSharp_pxr_VtMatrix3dArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtMatrix3dArray_CopyToArray__SWIG_0(void* jarg1, GfMatrix3d jarg2)
+void __cdecl CSharp_pxr_VtMatrix3dArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtMatrix3dArray_CopyFromArray__SWIG_0(void* jarg1, GfMatrix3d jarg2)
+void __cdecl CSharp_pxr_VtMatrix3dArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -57715,12 +57717,12 @@ char* __cdecl CSharp_pxr_VtMatrix2dArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtMatrix2dArray_CopyToArray__SWIG_0(void* jarg1, GfMatrix2d jarg2)
+void __cdecl CSharp_pxr_VtMatrix2dArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtMatrix2dArray_CopyFromArray__SWIG_0(void* jarg1, GfMatrix2d jarg2)
+void __cdecl CSharp_pxr_VtMatrix2dArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -57865,12 +57867,12 @@ char* __cdecl CSharp_pxr_VtMatrix4fArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtMatrix4fArray_CopyToArray__SWIG_0(void* jarg1, GfMatrix4f jarg2)
+void __cdecl CSharp_pxr_VtMatrix4fArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtMatrix4fArray_CopyFromArray__SWIG_0(void* jarg1, GfMatrix4f jarg2)
+void __cdecl CSharp_pxr_VtMatrix4fArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -58015,12 +58017,12 @@ char* __cdecl CSharp_pxr_VtMatrix3fArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtMatrix3fArray_CopyToArray__SWIG_0(void* jarg1, GfMatrix3f jarg2)
+void __cdecl CSharp_pxr_VtMatrix3fArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtMatrix3fArray_CopyFromArray__SWIG_0(void* jarg1, GfMatrix3f jarg2)
+void __cdecl CSharp_pxr_VtMatrix3fArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -58165,12 +58167,12 @@ char* __cdecl CSharp_pxr_VtMatrix2fArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtMatrix2fArray_CopyToArray__SWIG_0(void* jarg1, GfMatrix2f jarg2)
+void __cdecl CSharp_pxr_VtMatrix2fArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtMatrix2fArray_CopyFromArray__SWIG_0(void* jarg1, GfMatrix2f jarg2)
+void __cdecl CSharp_pxr_VtMatrix2fArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -58315,12 +58317,12 @@ char* __cdecl CSharp_pxr_VtRange3dArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtRange3dArray_CopyToArray__SWIG_0(void* jarg1, GfRange3d jarg2)
+void __cdecl CSharp_pxr_VtRange3dArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtRange3dArray_CopyFromArray__SWIG_0(void* jarg1, GfRange3d jarg2)
+void __cdecl CSharp_pxr_VtRange3dArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -58465,12 +58467,12 @@ char* __cdecl CSharp_pxr_VtRange2dArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtRange2dArray_CopyToArray__SWIG_0(void* jarg1, GfRange2d jarg2)
+void __cdecl CSharp_pxr_VtRange2dArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtRange2dArray_CopyFromArray__SWIG_0(void* jarg1, GfRange2d jarg2)
+void __cdecl CSharp_pxr_VtRange2dArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -58615,12 +58617,12 @@ char* __cdecl CSharp_pxr_VtRange1fArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtRange1fArray_CopyToArray__SWIG_0(void* jarg1, GfRange1f jarg2)
+void __cdecl CSharp_pxr_VtRange1fArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtRange1fArray_CopyFromArray__SWIG_0(void* jarg1, GfRange1f jarg2)
+void __cdecl CSharp_pxr_VtRange1fArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -58765,12 +58767,12 @@ char* __cdecl CSharp_pxr_VtRange1dArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtRange1dArray_CopyToArray__SWIG_0(void* jarg1, GfRange1d jarg2)
+void __cdecl CSharp_pxr_VtRange1dArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtRange1dArray_CopyFromArray__SWIG_0(void* jarg1, GfRange1d jarg2)
+void __cdecl CSharp_pxr_VtRange1dArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -58915,12 +58917,12 @@ char* __cdecl CSharp_pxr_VtIntervalArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtIntervalArray_CopyToArray__SWIG_0(void* jarg1, GfInterval jarg2)
+void __cdecl CSharp_pxr_VtIntervalArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtIntervalArray_CopyFromArray__SWIG_0(void* jarg1, GfInterval jarg2)
+void __cdecl CSharp_pxr_VtIntervalArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -59200,12 +59202,12 @@ char* __cdecl CSharp_pxr_VtTokenArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtTokenArray_CopyToArray__SWIG_0(void* jarg1, TfToken jarg2)
+void __cdecl CSharp_pxr_VtTokenArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtTokenArray_CopyFromArray__SWIG_0(void* jarg1, TfToken jarg2)
+void __cdecl CSharp_pxr_VtTokenArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -59345,12 +59347,12 @@ char* __cdecl CSharp_pxr_VtQuathArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtQuathArray_CopyToArray__SWIG_0(void* jarg1, GfQuath jarg2)
+void __cdecl CSharp_pxr_VtQuathArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtQuathArray_CopyFromArray__SWIG_0(void* jarg1, GfQuath jarg2)
+void __cdecl CSharp_pxr_VtQuathArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -59495,12 +59497,12 @@ char* __cdecl CSharp_pxr_VtQuatfArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtQuatfArray_CopyToArray__SWIG_0(void* jarg1, GfQuatf jarg2)
+void __cdecl CSharp_pxr_VtQuatfArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtQuatfArray_CopyFromArray__SWIG_0(void* jarg1, GfQuatf jarg2)
+void __cdecl CSharp_pxr_VtQuatfArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -59645,12 +59647,12 @@ char* __cdecl CSharp_pxr_VtQuatdArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtQuatdArray_CopyToArray__SWIG_0(void* jarg1, GfQuatd jarg2)
+void __cdecl CSharp_pxr_VtQuatdArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtQuatdArray_CopyFromArray__SWIG_0(void* jarg1, GfQuatd jarg2)
+void __cdecl CSharp_pxr_VtQuatdArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -59945,12 +59947,12 @@ char* __cdecl CSharp_pxr_VtDualQuathArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtDualQuathArray_CopyToArray__SWIG_0(void* jarg1, GfDualQuath jarg2)
+void __cdecl CSharp_pxr_VtDualQuathArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtDualQuathArray_CopyFromArray__SWIG_0(void* jarg1, GfDualQuath jarg2)
+void __cdecl CSharp_pxr_VtDualQuathArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -60095,12 +60097,12 @@ char* __cdecl CSharp_pxr_VtDualQuatfArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtDualQuatfArray_CopyToArray__SWIG_0(void* jarg1, GfDualQuatf jarg2)
+void __cdecl CSharp_pxr_VtDualQuatfArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtDualQuatfArray_CopyFromArray__SWIG_0(void* jarg1, GfDualQuatf jarg2)
+void __cdecl CSharp_pxr_VtDualQuatfArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
@@ -60245,12 +60247,12 @@ char* __cdecl CSharp_pxr_VtDualQuatdArray_ToString(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtDualQuatdArray_CopyToArray__SWIG_0(void* jarg1, GfDualQuatd jarg2)
+void __cdecl CSharp_pxr_VtDualQuatdArray_CopyToArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
 extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtDualQuatdArray_CopyFromArray__SWIG_0(void* jarg1, GfDualQuatd jarg2)
+void __cdecl CSharp_pxr_VtDualQuatdArray_CopyFromArray__SWIG_0(void* jarg1, void* jarg2)
 {
     return;
 }
