@@ -33347,6 +33347,11 @@ void* __cdecl CSharp_pxr_new_UsdGeomMesh__SWIG_2(void* jarg1)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
+void __cdecl CSharp_pxr_delete_UsdGeomMesh(void* jarg1)
+{
+    return;
+}
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdGeomMesh_GetSchemaAttributeNames__SWIG_0(bool jarg1)
 {
     return nullptr;
@@ -36245,6 +36250,11 @@ extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_new_UsdGeomSubset__SWIG_2(void* jarg1)
 {
     return nullptr;
+}
+extern "C" USDCS_EXPORT
+void __cdecl CSharp_pxr_delete_UsdGeomSubset(void* jarg1)
+{
+    return;
 }
 extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdGeomSubset_GetSchemaAttributeNames__SWIG_0(bool jarg1)
