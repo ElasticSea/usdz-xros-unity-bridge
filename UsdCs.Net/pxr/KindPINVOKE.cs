@@ -11,7 +11,7 @@ namespace pxr
 
 			private static SWIGStringDelegate stringDelegate;
 
-			[DllImport("UsdCs")]
+			[DllImport("__Internal")]
 			public static extern void SWIGRegisterStringCallback_Kind(SWIGStringDelegate stringDelegate);
 
 			[MonoPInvokeCallback]
@@ -38,19 +38,19 @@ namespace pxr
 			swigStringHelper = new SWIGStringHelper();
 		}
 
-		[DllImport("UsdCs", EntryPoint = "CSharp_pxr_KindRegistry_GetInstance")]
+		[DllImport("__Internal", EntryPoint = "CSharp_pxr_KindRegistry_GetInstance")]
 		public static extern IntPtr KindRegistry_GetInstance();
 
-		[DllImport("UsdCs", EntryPoint = "CSharp_pxr_KindRegistry_HasKind")]
+		[DllImport("__Internal", EntryPoint = "CSharp_pxr_KindRegistry_HasKind")]
 		public static extern bool KindRegistry_HasKind(HandleRef jarg1);
 
-		[DllImport("UsdCs", EntryPoint = "CSharp_pxr_KindRegistry_GetBaseKind")]
+		[DllImport("__Internal", EntryPoint = "CSharp_pxr_KindRegistry_GetBaseKind")]
 		public static extern IntPtr KindRegistry_GetBaseKind(HandleRef jarg1);
 
-		[DllImport("UsdCs", EntryPoint = "CSharp_pxr_KindRegistry_IsA")]
+		[DllImport("__Internal", EntryPoint = "CSharp_pxr_KindRegistry_IsA")]
 		public static extern bool KindRegistry_IsA(HandleRef jarg1, HandleRef jarg2);
 
-		[DllImport("UsdCs", EntryPoint = "CSharp_pxr_KindRegistry_GetAllKinds")]
+		[DllImport("__Internal", EntryPoint = "CSharp_pxr_KindRegistry_GetAllKinds")]
 		public static extern IntPtr KindRegistry_GetAllKinds();
 	}
 }
