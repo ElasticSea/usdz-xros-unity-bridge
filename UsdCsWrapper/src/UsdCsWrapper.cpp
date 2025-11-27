@@ -1613,7 +1613,6 @@ unsigned int __cdecl CSharp_pxr_UsdUtilsSparseValueWriter_SetAttribute__SWIG_0(
 
 // // tokens
 extern "C" USDCS_EXPORT
-extern "C" USDCS_EXPORT
 char* __cdecl CSharp_pxr_TfMakeValidIdentifier(char* jarg1)
 {
     
