@@ -1390,6 +1390,19 @@ pxr::UsdGeomGprim* __cdecl CSharp_pxr_UsdGeomPointBased_SWIGUpcast(
     return static_cast<pxr::UsdGeomGprim*>(jarg1);
 }
 
+#include "pxr/pxr.h"
+#include "pxr/base/plug/registry.h"
+#include <string>
+extern "C" USDCS_EXPORT
+void __cdecl CSharp_pxr_RegisterPluginPath(const char* dir)
+{
+    if (!dir || !*dir)
+        return;
+
+    std::string path(dir);
+    PlugRegistry::GetInstance().RegisterPlugins(path);
+}
+
 extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdSchemaBase_GetPrim(void* jarg1)
 {
