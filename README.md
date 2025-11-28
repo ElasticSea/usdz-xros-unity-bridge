@@ -11,12 +11,18 @@ Provide a tiny, portable replacement for Unity’s legacy `UsdCs` native layer s
 
 Works on **Windows (for testing)** and **visionOS (XROS)**.
 
+## What needs to be done
+- Build OpenUSD v25 for xros as static monolithic library
+- Build a wrapper around ~260 methods that are used by the unity USDZ export path as a static lib on xros
+- Decompile and recompile Usd.net managed wrapper
+- Force xcode to force link usd monolithic library do this as a postprocess step in unity
+- Bundle usd plugin folder and emmit it at runtime
+
 ## Problem Breakdown
 - Unity’s USD relies on **OpenUSD 20.08**, which **cannot build** on visionOS.
 - XROS SDK lacks several APIs assumed by Pixar's old code (ptrace, signals, some ABI pieces).
 - Unity’s SWIG layer expects **~120 specific native symbols** (`CSharp_pxr_*`).
 - USD 25.x changes ABI, layout, and signatures—wrapper must normalize differences.
-- Need Windows parity to capture the correct behavior of the old UsdCs.
 - Need a new, minimal native wrapper that exposes only the required surface area.
 
 ## Architecture
