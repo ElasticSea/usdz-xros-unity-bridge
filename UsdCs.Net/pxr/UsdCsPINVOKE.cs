@@ -12,7 +12,7 @@ namespace pxr
 
 			private static SWIGStringDelegate stringDelegate;
 
-			[DllImport("__Internal")]
+			[DllImport(UsdDll.USD_EXPORT_NAME)]
 			public static extern void SWIGRegisterStringCallback_UsdCs(SWIGStringDelegate stringDelegate);
 
 			[MonoPInvokeCallback]
@@ -62,11 +62,11 @@ namespace pxr
 
 			private static ExceptionArgumentDelegate argumentOutOfRangeDelegate;
 
-			[DllImport("__Internal")]
+			[DllImport(UsdDll.USD_EXPORT_NAME)]
 			[MonoPInvokeCallback]
 			public static extern void SWIGRegisterExceptionCallbacks_UsdCs(ExceptionDelegate applicationDelegate, ExceptionDelegate arithmeticDelegate, ExceptionDelegate divideByZeroDelegate, ExceptionDelegate indexOutOfRangeDelegate, ExceptionDelegate invalidCastDelegate, ExceptionDelegate invalidOperationDelegate, ExceptionDelegate ioDelegate, ExceptionDelegate nullReferenceDelegate, ExceptionDelegate outOfMemoryDelegate, ExceptionDelegate overflowDelegate, ExceptionDelegate systemExceptionDelegate);
 
-			[DllImport("__Internal", EntryPoint = "SWIGRegisterExceptionArgumentCallbacks_UsdCs")]
+			[DllImport(UsdDll.USD_EXPORT_NAME, EntryPoint = "SWIGRegisterExceptionArgumentCallbacks_UsdCs")]
 			[MonoPInvokeCallback]
 			public static extern void SWIGRegisterExceptionCallbacksArgument_UsdCs(ExceptionArgumentDelegate argumentDelegate, ExceptionArgumentDelegate argumentNullDelegate, ExceptionArgumentDelegate argumentOutOfRangeDelegate);
 
@@ -251,19 +251,19 @@ namespace pxr
 			swigExceptionHelper = new SWIGExceptionHelper();
 		}
 
-		[DllImport("__Internal", EntryPoint = "CSharp_pxr_SetEnv")]
+		[DllImport(UsdDll.USD_EXPORT_NAME, EntryPoint = "CSharp_pxr_SetEnv")]
 		public static extern void SetEnv(string jarg1, string jarg2);
 
-		[DllImport("__Internal", EntryPoint = "CSharp_pxr_GetFusedTransform")]
+		[DllImport(UsdDll.USD_EXPORT_NAME, EntryPoint = "CSharp_pxr_GetFusedTransform")]
 		public static extern IntPtr GetFusedTransform(HandleRef jarg1, HandleRef jarg2);
 
-		[DllImport("__Internal", EntryPoint = "CSharp_pxr_WriteUsdZip")]
+		[DllImport(UsdDll.USD_EXPORT_NAME, EntryPoint = "CSharp_pxr_WriteUsdZip")]
 		public static extern bool WriteUsdZip(string jarg1, HandleRef jarg2);
 
-		[DllImport("__Internal", EntryPoint = "CSharp_pxr_GetFusedDisplayColor")]
+		[DllImport(UsdDll.USD_EXPORT_NAME, EntryPoint = "CSharp_pxr_GetFusedDisplayColor")]
 		public static extern IntPtr GetFusedDisplayColor(HandleRef jarg1, HandleRef jarg2);
 
-		[DllImport("__Internal", EntryPoint = "CSharp_pxr_SetFusedDisplayColor")]
+		[DllImport(UsdDll.USD_EXPORT_NAME, EntryPoint = "CSharp_pxr_SetFusedDisplayColor")]
 		public static extern bool SetFusedDisplayColor(HandleRef jarg1, HandleRef jarg2, HandleRef jarg3);
 	}
 }

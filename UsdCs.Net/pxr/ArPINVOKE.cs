@@ -11,7 +11,7 @@ namespace pxr
 
 			private static SWIGStringDelegate stringDelegate;
 
-			[DllImport("__Internal")]
+			[DllImport(UsdDll.USD_EXPORT_NAME)]
 			public static extern void SWIGRegisterStringCallback_Ar(SWIGStringDelegate stringDelegate);
 
 			[MonoPInvokeCallback]
@@ -38,19 +38,19 @@ namespace pxr
 			swigStringHelper = new SWIGStringHelper();
 		}
 
-		[DllImport("__Internal", EntryPoint = "CSharp_pxr_new_ArResolverContext__SWIG_0")]
+		[DllImport(UsdDll.USD_EXPORT_NAME, EntryPoint = "CSharp_pxr_new_ArResolverContext__SWIG_0")]
 		public static extern IntPtr new_ArResolverContext__SWIG_0();
 
-		[DllImport("__Internal", EntryPoint = "CSharp_pxr_new_ArResolverContext__SWIG_1")]
+		[DllImport(UsdDll.USD_EXPORT_NAME, EntryPoint = "CSharp_pxr_new_ArResolverContext__SWIG_1")]
 		public static extern IntPtr new_ArResolverContext__SWIG_1(HandleRef jarg1);
 
-		[DllImport("__Internal", EntryPoint = "CSharp_pxr_ArResolverContext_IsEmpty")]
+		[DllImport(UsdDll.USD_EXPORT_NAME, EntryPoint = "CSharp_pxr_ArResolverContext_IsEmpty")]
 		public static extern bool ArResolverContext_IsEmpty(HandleRef jarg1);
 
-		[DllImport("__Internal", EntryPoint = "CSharp_pxr_ArResolverContext_GetDebugString")]
+		[DllImport(UsdDll.USD_EXPORT_NAME, EntryPoint = "CSharp_pxr_ArResolverContext_GetDebugString")]
 		public static extern string ArResolverContext_GetDebugString(HandleRef jarg1);
 
-		[DllImport("__Internal", EntryPoint = "CSharp_pxr_delete_ArResolverContext")]
+		[DllImport(UsdDll.USD_EXPORT_NAME, EntryPoint = "CSharp_pxr_delete_ArResolverContext")]
 		public static extern void delete_ArResolverContext(HandleRef jarg1);
 	}
 }
