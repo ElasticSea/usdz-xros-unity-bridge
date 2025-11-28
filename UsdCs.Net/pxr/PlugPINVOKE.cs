@@ -390,6 +390,6 @@ namespace pxr
 		public static extern IntPtr PlugRegistry_GetDataFromPluginMetaData(HandleRef jarg1, HandleRef jarg2, string jarg3);
 
 		[DllImport(UsdDll.USD_EXPORT_NAME, EntryPoint = "CSharp_pxr_RegisterPluginPath")]
-		private static extern void RegisterPluginPath(string path);
+        public static extern void PlugRegistry_RegisterPluginPath(string path);
 	}
 }

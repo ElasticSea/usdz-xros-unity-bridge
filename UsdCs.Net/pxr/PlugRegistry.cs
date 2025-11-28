@@ -173,5 +173,14 @@ namespace pxr
 			}
 			return result;
 		}
+
+		public static void RegisterPluginPath(string path)
+        {
+            PlugPINVOKE.PlugRegistry_RegisterPluginPath(path);
+            if (UsdCsPINVOKE.SWIGPendingException.Pending)
+            {
+                throw UsdCsPINVOKE.SWIGPendingException.Retrieve();
+            }
+		}
 	}
 }
