@@ -3,8 +3,9 @@
     <AssemblyName>USD.NET</AssemblyName>
     <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>USD.NET.Internal</AssemblyName>
+    <AssemblyName>USD.NET</AssemblyName>
     <DefineConstants>USD_INTERNAL;$(DefineConstants)</DefineConstants>
+    <OutputPath>bin\internal\</OutputPath>
   </PropertyGroup>
   <PropertyGroup>
     <LangVersion>9.0</LangVersion>
