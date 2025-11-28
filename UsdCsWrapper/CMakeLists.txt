@@ -10,16 +10,23 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include_directories("${USD_ROOT}/include")
 link_directories("${USD_ROOT}/lib")
 
+# Collect all sources from src/
+file(GLOB_RECURSE USDC_WRAPPER_SOURCES
+    CONFIGURE_DEPENDS
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c"
+)
+
 # ------------------------------------------------------------------
 # 1. STATIC on XROS / iOS, SHARED everywhere else
 # ------------------------------------------------------------------
 
 if (CMAKE_SYSTEM_NAME STREQUAL "XROS" OR CMAKE_OSX_SYSROOT MATCHES "xros")
     message(STATUS "Building STATIC UsdCs for visionOS/XROS")
-    add_library(UsdCs STATIC src/UsdCsWrapper.cpp)
+    add_library(UsdCs STATIC ${USDC_WRAPPER_SOURCES})
 else()
     message(STATUS "Building SHARED UsdCs for desktop")
-    add_library(UsdCs SHARED src/UsdCsWrapper.cpp)
+    add_library(UsdCs SHARED ${USDC_WRAPPER_SOURCES})
 endif()
 
 # ------------------------------------------------------------------
