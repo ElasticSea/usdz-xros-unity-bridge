@@ -1404,6 +1404,72 @@ void __cdecl CSharp_pxr_RegisterPluginPath(const char* dir)
 }
 
 extern "C" USDCS_EXPORT
+void* CSharp_pxr_UsdAttribute_Get__SWIG_3(void* jarg1)
+{
+    try
+    {
+        pxr::UsdAttribute* attr = reinterpret_cast<pxr::UsdAttribute*>(jarg1);
+        if (!attr)
+            return nullptr;
+
+        pxr::VtValue value;
+        bool ok = attr->Get(&value);
+
+        if (!ok)
+            return nullptr;  // USD says no value
+
+        // SWIG expects heap allocation
+        return new pxr::VtValue(value);
+    }
+    catch (...)
+    {
+        return nullptr;
+    }
+}
+
+extern "C" USDCS_EXPORT
+bool __cdecl CSharp_pxr_UsdAttribute_Set__SWIG_3(void* jarg1, void* jarg2)
+{
+    try
+    {
+        auto* attr = reinterpret_cast<pxr::UsdAttribute*>(jarg1);
+        auto* val = reinterpret_cast<pxr::VtValue*>(jarg2);
+
+        if (!attr || !val)
+            return false;
+
+        return attr->Set(*val);
+    }
+    catch (...)
+    {
+        return false;
+    }
+}
+
+extern "C" USDCS_EXPORT void*
+CSharp_pxr_UsdGeomMesh_CreateSubdivisionSchemeAttr__SWIG_2(void* jarg1)
+{
+    try
+    {
+        pxr::UsdGeomMesh* mesh =
+            reinterpret_cast<pxr::UsdGeomMesh*>(jarg1);
+
+        if (!mesh)
+            return nullptr;
+
+        pxr::UsdAttribute attr =
+            mesh->CreateSubdivisionSchemeAttr(/*default value*/);
+
+        // Return a heap pointer because SWIG expects ownership transfer
+        return new pxr::UsdAttribute(attr);
+    }
+    catch (...)
+    {
+        return nullptr;
+    }
+}
+
+extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdSchemaBase_GetPrim(void* jarg1)
 {
     auto* schema = static_cast<const pxr::UsdSchemaBase*>(jarg1);

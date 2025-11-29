@@ -33427,11 +33427,6 @@ void* __cdecl CSharp_pxr_UsdGeomMesh_CreateSubdivisionSchemeAttr__SWIG_1(void* j
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void* __cdecl CSharp_pxr_UsdGeomMesh_CreateSubdivisionSchemeAttr__SWIG_2(void* jarg1)
-{
-    return nullptr;
-}
-extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdGeomMesh_GetInterpolateBoundaryAttr(void* jarg1)
 {
     return nullptr;
@@ -40122,11 +40117,6 @@ bool __cdecl CSharp_pxr_UsdAttribute_Set__SWIG_2(void* jarg1, void* jarg2, void*
     return false;
 }
 extern "C" USDCS_EXPORT
-bool __cdecl CSharp_pxr_UsdAttribute_Set__SWIG_3(void* jarg1, void* jarg2)
-{
-    return false;
-}
-extern "C" USDCS_EXPORT
 bool __cdecl CSharp_pxr_UsdAttribute_Clear(void* jarg1)
 {
     return false;
@@ -40203,11 +40193,6 @@ void* __cdecl CSharp_pxr_UsdAttribute_GetTimeSamples(void* jarg1)
 }
 extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdAttribute_GetTimeSamplesInInterval(void* jarg1, void* jarg2)
-{
-    return nullptr;
-}
-extern "C" USDCS_EXPORT
-void* __cdecl CSharp_pxr_UsdAttribute_Get__SWIG_3(void* jarg1)
 {
     return nullptr;
 }
