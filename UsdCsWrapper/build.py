@@ -1,16 +1,20 @@
 import os
 import sys
 import subprocess
+import shutil
 
 if len(sys.argv) < 2:
-    print("Usage: python build.py <USD_ROOT_PATH> [platform]")
-    print("  platform: win64 (default), visionOS")
+    print("Usage: python build.py <USD_ROOT_PATH> [platform] [output_dir]")
+    print("  platform: win64, visionOS")
+    print("  output_dir: optional folder to copy UsdCs.dll into (win64 only)")
     sys.exit(1)
 
 USD_ROOT = sys.argv[1]
-platform = sys.argv[2] if len(sys.argv) >= 3 else "win64"
+platform = sys.argv[2]
+output_dir = os.path.abspath(sys.argv[3]) if len(sys.argv) >= 4 else None
 
-build_dir = f"build_{platform}"
+orig_cwd = os.getcwd()
+build_dir = os.path.join(orig_cwd, f"build_{platform}")
 if not os.path.exists(build_dir):
     os.makedirs(build_dir)
 
@@ -56,3 +60,22 @@ build_cmd = [
 ]
 
 subprocess.check_call(build_cmd)
+
+# Optional copy step (win64 only)
+if output_dir:
+    if platform == "win64":
+        dll_name = "UsdCs.dll"
+        src_path = os.path.join(os.getcwd(), "RelWithDebInfo", dll_name)
+
+        if not os.path.isfile(src_path):
+            print(f"ERROR: Built dll not found at: {src_path}")
+            sys.exit(1)
+
+        if not os.path.isdir(output_dir):
+            os.makedirs(output_dir, exist_ok=True)
+
+        dst_path = os.path.join(output_dir, dll_name)
+        shutil.copy2(src_path, dst_path)
+        print(f"Copied {src_path} -> {dst_path}")
+    else:
+        print("NOTE: output_dir was given, but auto-copy is only implemented for win64.")

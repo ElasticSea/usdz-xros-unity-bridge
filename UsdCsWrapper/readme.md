@@ -9,7 +9,7 @@ python3 build_scripts/build_usd.py ./build_xros --build-target visionOS --no-pyt
 ## Build Wrapper
 ```bash
 win
-python build.py D:/ElasticSea/OpenUSD/build_win64
+python build.py D:/ElasticSea/OpenUSD/build_win64 win64 D:/ElasticSea/blockworks/Packages/com.unity.usd.core@a7855ade4aa6/Runtime/Plugins/x86_64/Windows/lib
 visionos
 python3 build.py /Users/elasticsea/Repo/OpenUSD/build_xros visionOS
 ```
