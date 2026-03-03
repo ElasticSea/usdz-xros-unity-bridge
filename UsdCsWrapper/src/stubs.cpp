@@ -16582,16 +16582,6 @@ void __cdecl CSharp_pxr_SdfLayerHandle_SetHasOwnedSubLayers(void* jarg1, bool ja
     return;
 }
 extern "C" USDCS_EXPORT
-void* __cdecl CSharp_pxr_SdfLayerHandle_GetCustomLayerData(void* jarg1)
-{
-    return nullptr;
-}
-extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_SdfLayerHandle_SetCustomLayerData(void* jarg1, void* jarg2)
-{
-    return;
-}
-extern "C" USDCS_EXPORT
 bool __cdecl CSharp_pxr_SdfLayerHandle_HasCustomLayerData(void* jarg1)
 {
     return false;
@@ -44577,11 +44567,6 @@ void* __cdecl CSharp_pxr_UsdStage_Open__SWIG_0(char* jarg1, int jarg2)
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void* __cdecl CSharp_pxr_UsdStage_Open__SWIG_1(char* jarg1)
-{
-    return nullptr;
-}
-extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdStage_Open__SWIG_2(char* jarg1, void* jarg2, int jarg3)
 {
     return nullptr;
@@ -44863,11 +44848,6 @@ bool __cdecl CSharp_pxr_UsdStage_RemovePrim(void* jarg1, void* jarg2)
 }
 extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_UsdStage_GetSessionLayer(void* jarg1)
-{
-    return nullptr;
-}
-extern "C" USDCS_EXPORT
-void* __cdecl CSharp_pxr_UsdStage_GetRootLayer(void* jarg1)
 {
     return nullptr;
 }
@@ -53572,22 +53552,12 @@ void* __cdecl CSharp_pxr_VtDictionary_GetValueAtPath__SWIG_0(void* jarg1, char* 
     return nullptr;
 }
 extern "C" USDCS_EXPORT
-void* __cdecl CSharp_pxr_VtDictionary_GetValueAtPath__SWIG_1(void* jarg1, char* jarg2)
-{
-    return nullptr;
-}
-extern "C" USDCS_EXPORT
 void* __cdecl CSharp_pxr_VtDictionary_GetValueAtPath__SWIG_2(void* jarg1, void* jarg2)
 {
     return nullptr;
 }
 extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_VtDictionary_SetValueAtPath__SWIG_0(void* jarg1, char* jarg2, void* jarg3, char* jarg4)
-{
-    return;
-}
-extern "C" USDCS_EXPORT
-void __cdecl CSharp_pxr_VtDictionary_SetValueAtPath__SWIG_1(void* jarg1, char* jarg2, void* jarg3)
 {
     return;
 }
@@ -58960,11 +58930,6 @@ extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_VtValueToVtIntervalArray__SWIG_1(void* jarg1, void* jarg2)
 {
     return;
-}
-extern "C" USDCS_EXPORT
-char* __cdecl CSharp_pxr_VtValueTostring__SWIG_0(void* jarg1)
-{
-    return nullptr;
 }
 extern "C" USDCS_EXPORT
 void __cdecl CSharp_pxr_VtValueTostring__SWIG_1(void* jarg1, char** jarg2)

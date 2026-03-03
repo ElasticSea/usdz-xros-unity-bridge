@@ -1980,3 +1980,118 @@ unsigned int __cdecl CSharp_pxr_SetFusedDisplayColor(void* jarg1, void* jarg2, v
     bool ok = SetFusedDisplayColor(*prim, *vals, *time);
     return ok ? 1u : 0u;
 }
+
+extern "C" USDCS_EXPORT
+void* __cdecl CSharp_pxr_UsdStage_Open__SWIG_1(char* jarg1)
+{
+    if (!jarg1) return nullptr;
+    
+    std::string filePath(jarg1);
+    pxr::UsdStageRefPtr stage = pxr::UsdStage::Open(filePath);
+    
+    if (!stage) {
+        return nullptr;
+    }
+    
+    // Return a pointer to the RefPtr so C# holds the reference count correctly
+    return new pxr::UsdStageRefPtr(stage);
+}
+
+extern "C" USDCS_EXPORT
+void* __cdecl CSharp_pxr_UsdStage_GetRootLayer(void* jarg1)
+{
+    if (!jarg1) return nullptr;
+
+    // jarg1 is the UsdStageRefPtr returned by UsdStage_Open
+    pxr::UsdStageRefPtr* stageRef = (pxr::UsdStageRefPtr*)jarg1;
+    
+    if (!(*stageRef)) return nullptr;
+
+    pxr::SdfLayerHandle rootLayer = (*stageRef)->GetRootLayer();
+    
+    // Return a new handle on the heap for C# to manage
+    return new pxr::SdfLayerHandle(rootLayer);
+}
+
+extern "C" USDCS_EXPORT
+void* __cdecl CSharp_pxr_SdfLayerHandle_GetCustomLayerData(void* jarg1)
+{
+    if (!jarg1) return nullptr;
+
+    pxr::SdfLayerHandle* layerHnd = (pxr::SdfLayerHandle*)jarg1;
+    
+    if (!(*layerHnd)) return nullptr;
+
+    // Get the data (returns a VtDictionary by value)
+    pxr::VtDictionary dict = (*layerHnd)->GetCustomLayerData();
+    
+    // Allocate a copy on the heap for C# to own
+    return new pxr::VtDictionary(dict);
+}
+
+extern "C" USDCS_EXPORT
+void __cdecl CSharp_pxr_SdfLayerHandle_SetCustomLayerData(void* jarg1, void* jarg2)
+{
+    if (!jarg1 || !jarg2) return;
+
+    pxr::SdfLayerHandle* layerHnd = (pxr::SdfLayerHandle*)jarg1;
+    pxr::VtDictionary* dict = (pxr::VtDictionary*)jarg2;
+
+    if (*layerHnd) {
+        (*layerHnd)->SetCustomLayerData(*dict);
+    }
+}
+
+extern "C" USDCS_EXPORT
+void* __cdecl CSharp_pxr_VtDictionary_GetValueAtPath__SWIG_1(void* jarg1, char* jarg2)
+{
+    if (!jarg1 || !jarg2) return nullptr;
+
+    pxr::VtDictionary* dict = (pxr::VtDictionary*)jarg1;
+    std::string path(jarg2);
+    
+    // Returns a pointer to a const VtValue
+    pxr::VtValue const* val = dict->GetValueAtPath(path);
+    
+    if (!val) {
+        return nullptr;
+    }
+    
+    // Return a modifiable copy on the heap for C#
+    return new pxr::VtValue(*val); 
+}
+
+extern "C" USDCS_EXPORT
+void __cdecl CSharp_pxr_VtDictionary_SetValueAtPath__SWIG_1(void* jarg1, char* jarg2, void* jarg3)
+{
+    if (!jarg1 || !jarg2 || !jarg3) return;
+
+    pxr::VtDictionary* dict = (pxr::VtDictionary*)jarg1;
+    std::string path(jarg2);
+    pxr::VtValue* val = (pxr::VtValue*)jarg3;
+
+    dict->SetValueAtPath(path, *val);
+}
+
+extern "C" USDCS_EXPORT
+char* __cdecl CSharp_pxr_VtValueTostring__SWIG_0(void* jarg1)
+{
+    if (!jarg1) return nullptr;
+    
+    pxr::VtValue* val = (pxr::VtValue*)jarg1;
+    std::string strResult;
+    
+    // Safely extract the string if it is one, otherwise fall back to stringify
+    if (val->IsHolding<std::string>()) {
+        strResult = val->Get<std::string>();
+    } else {
+        strResult = pxr::TfStringify(*val);
+    }
+    
+    // MUST duplicate into raw memory. Unity's C# marshaller will take ownership and free it.
+#ifdef _WIN32
+    return _strdup(strResult.c_str());
+#else
+    return strdup(strResult.c_str());
+#endif
+}
