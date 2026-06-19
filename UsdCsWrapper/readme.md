@@ -17,5 +17,5 @@ copy /Y "D:\ElasticSea\usdz-xros-unity-bridge\UsdCsWrapper\build\RelWithDebInfo\
 visionos
 ```bash
 python3 build.py /Users/elasticsea/Repo/OpenUSD/build_xros visionOS
-copy /Y "/Users/elasticsea/Repo/usdz-xros-unity-bridge/UsdCsWrapper/build_visionOS/RelWithDebInfo-xros/libUsdCs.a" "/Users/elasticsea/Repo/blockworks/Packages/com.unity.usd.core@a7855ade4aa6/Runtime/Plugins/arm64/VisionsOs/libUsdCs.a"
+cp -f "/Users/elasticsea/Repo/usdz-xros-unity-bridge/UsdCsWrapper/build_visionOS/RelWithDebInfo-xros/libUsdCs.a" "/Users/elasticsea/Repo/blockworks/Packages/com.unity.usd.core@a7855ade4aa6/Runtime/Plugins/arm64/VisionsOs/libUsdCs.a"
 ```
